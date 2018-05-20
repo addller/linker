@@ -1,0 +1,56 @@
+﻿git init
+git remote add origin https://github.com/addller/linker.git
+git fetch
+git update-git-for-windows
+git checkout branch_selecionado
+git rm nome_do_arquivo para remover do repositório
+
+------------------------------------------------------------------
+
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin youruser@yourserver.com:/path/to/my_project.git
+git push origin master
+
+
+…or create a new repository on the command line
+echo "# linker" >> README.md
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/addller/linker.git
+git push -u origin master
+…or push an existing repository from the command line
+git remote add origin https://github.com/addller/linker.git
+git push -u origin master
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+$ git update-git-for-windows
+
+
+Dicas:
+
+
+Para desfazer a inclusão de um item faça:
+
+git reset <nomearquivo>
+
+git add -A
+e
+
+git add --all 
+você obtêm o mesmo resultado (na verdade o primeiro e uma abreviação do segundo).
+
+Outra maneira seria usar er:
+
+git add *
+Mas para isso funcionar você precisa estar no repositório raiz fazendo com que todos arquivos sejam pegos pela er.
+
+Em uma caso extremo se você quiser deixar esses comandos ainda mais abreviados, pode tentar git aliases para abrevia-los.
+fonte: https://pt.stackoverflow.com/questions/142726/adicionar-todas-as-%C3%BAltimas-mudan%C3%A7as-ao-commit-no-git
+
++ ajuda em
+
+https://gist.github.com/leocomelli/2545add34e4fec21ec16#comando-espec%C3%ADfico
