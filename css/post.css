@@ -1,0 +1,173 @@
+/*Suporte até window.width = 719px*/
+section{
+    position: absolute;
+    width: 82.4%; 
+    border: 1px solid red;
+    top: 0;
+    left: 24em;
+
+}
+
+#controleEsquerdo{
+    min-width: 240px;  
+    max-width: 240px; 
+}
+
+section > div:first-child{
+    width: 65.5%;
+    float: left;  
+    border: 1px dashed blue;
+}
+
+aside{ 
+    width: 33%;
+    float: left;
+}
+
+aside div{
+    width: 100%; 
+    border: 1px dashed red;
+}
+aside div iframe{
+    display: block;
+    width: 90%;
+    padding: 5px;
+    margin: auto;
+    height: 150px;
+}
+
+#fileImagePost{
+    display: none;
+}
+
+.imgPost{
+    width: 100px;
+    height: 100px;
+    background: url("../img/perfi_default_feminino.jpg") 55% 45% no-repeat;
+    background-size: 125% 125%;
+    border-radius: 5% 5%;
+    display: inline-block;  
+    cursor: pointer;
+
+}
+
+.imgPost:hover{
+    background-size: 160% 160%;
+    background-position: 48% 37%;
+    transition: .4s;
+}
+
+#formPost{
+    padding: 20px 0;
+    width: 100%;
+}
+
+#formPost p{
+    width: 90%;
+    padding: 5px 10px 3px 3px;
+    margin: auto;
+    border: 1px dashed blue;
+}
+
+#formPost p label{
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    top: 2px;
+    font-size: 1.5em;
+    width: 9em;
+    box-shadow: 2px 3px rgba(35,35,255,.5);
+    background-color: #05e7ee;
+    padding: 5px 3px 2px 5px;
+    border-radius: 0 0 5px 0;
+    cursor: pointer;
+}
+
+#formPost input[type="text"]{
+    text-indent: 12em;
+    width: 95%;
+    font-size: 1.3em;
+    padding: 5px 3px 2px 5px;
+    box-shadow: 2px 3px rgba(50,50,50,.5);
+    border: none;
+    border-radius: 0 20px 20px 0;
+    background-color: #fafafa;
+    position: relative;
+    top: -22px;
+}
+
+#formPost input[type="text"]:hover{
+    background-color: #d2e1f3;
+}
+
+#formPost #forUrlSite{
+    background-color: #f3f2a9;
+}
+
+#formPost #forUrlVideo{
+    background-color: #f3f2a9;
+}
+
+#formPost #forUrlImagem{
+    background-color: #f3f2a9;
+}
+
+#formPost #forUrlSite:hover{
+    background-color: #d2e1f3;
+}
+
+#formPost #forUrlVideo:hover{
+    background-color: #d2e1f3;
+}
+
+#formPost #forUrlImagem:hover{
+    background-color: #d2e1f3;
+}
+
+#formPost p input[type="button"]{
+    position: relative;
+    width: 60%;
+    border: none;
+    box-shadow: 2px 1px;
+    border-radius: 50% 50%;
+    width: 24px;
+    height: 24px;
+    color: blue;
+    cursor: pointer;
+    background-color: #bababa;
+    font-size: 1.5em;
+    top: -24px;
+    left: -10px;   
+}
+
+#formPost p span{
+    position: relative;
+    right: -4px;
+    margin-left: -40px;
+    top: -12px;
+    left: 25px;
+    z-index: 1;
+    box-shadow: 2px 2px yellow;
+    border: none;
+}
+
+#formPost textarea{  
+    text-indent: 2em;
+    text-align: justify;
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: auto;
+    padding: 5px 10px;
+    top: 5px;
+    bottom: 17px;
+    font-size: 14px;
+}
+
+#formPost div p{
+    text-indent: 2em;
+    text-align: justify;
+    font-size: 15px;
+    padding-top: 2em;
+    padding-bottom: 8px;
+}

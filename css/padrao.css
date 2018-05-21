@@ -1,0 +1,365 @@
+/*Início dos estilos esclusivos*/
+*{
+    font-size: 10px;
+}
+
+/*Elementos com flutuação direita*/
+.topo .close,
+.topo .perfil,
+.topo .lupa,
+input[value="Cadastre-se"],
+input[value="Entrar"]{
+    float: right;
+}
+
+/*Elementos com flutuação esquerda*/
+.logo,
+.menu li{
+    float: left;
+}
+
+
+/*Elementos com posições relativas*/
+.accordion,
+.logo,
+.icon,
+.topo .help,
+.topo .lupa,
+.topo .perfil,
+.topo form select,
+.topo form input,
+.menu li,
+input[value="Cadastre-se"],
+input[value="Entrar"]{
+    position: relative;
+}
+
+/*Elementos com posições absolutas*/
+.topo #filtros,
+.topo #cadastro,
+#mostrarMetrica,
+#pesquisar,
+li > ul{
+    position: absolute;
+}
+
+/*
+###Fim dos estilos##//
+   ##esclusivos##
+*/
+
+.hide{
+    display: none;
+}
+
+#mostrarMetrica{
+    border: 3px dashed blue;
+    width: 150px;
+    height: 100px;
+    top: 200px; 
+    left: 3%;
+    margin-left: 5%;
+    background-color: yellow;
+    padding: 5px;
+    font-size: 1.3em;
+}
+
+body{
+    width: 100%;
+    margin: auto;
+}
+
+h1{
+    font-size: 3em;
+}
+
+h2{
+    font-size: 2em;
+}
+
+h3{
+    font-size: 1em;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.validate{
+    display: inline-block;
+    background: url("../img/sprite_padrao_off.png") -176.5px -143px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50% 50%;
+    box-shadow: 2px 1.4px #888888;
+
+}
+
+.menu li{
+    font-size: 1.75em;
+    border: 1px solid red;
+    width: 120px;
+    padding: 6px;
+    list-style-type: none;
+}
+
+.menu li li{  
+    border: 1.4px solid red;
+    width: 121px;
+}
+
+.menu li:hover{
+    background-color: #cccccc;
+    transition: 1.5s;
+}
+
+.menu li:hover ul{
+    display: block;
+}
+
+li > ul{
+    right: -1px;
+    top: 32px;
+    display: none;    
+}
+
+table{
+    border: 1px solid blue;
+}
+
+table th{
+    border: 1px solid green;
+}
+
+#tableCadastro td{
+    border: 1px solid red;
+}
+
+/* Estilizando os buttons do accordeos*/
+.accordion {    
+    transition: 0.4s;
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none; 
+    box-shadow: 0 1px white;
+}
+
+/*Modifica a cor de fundo do accordeon, quando o button está on ou quando o mouse está sobre ele (adicionar .active class no JS)*/
+.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+/*O Style do accordion panel. por padrão é hidden*/
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+.topo{
+    width: 100%;
+    background-color: white;
+    height: 55px;
+    border: 1px dashed blue;
+    display: block;
+}
+
+.logo{
+    top: -8px;
+    display: inline-block;
+    z-index: 2;
+}
+.logo img{
+    height: 44px;
+    margin-left: 50px;
+    margin-top: 5px;
+}
+.logo figcaption{
+    display: none;
+}
+
+#pesquisar{
+    display: block;
+    top: 11px;
+    left: 14em;
+    width: 60%;  
+}
+
+#pesquisar input{
+    text-indent: 7em;
+    width: 100%;
+    height: 29px; 
+    font-size: 1.5em;
+    box-shadow: 3px 3px #bbb;
+    border-radius: 30px;
+    outline-style:none; 
+}
+
+.topo input[name="pesquisar"]{
+    background: linear-gradient(85deg, #feffe2, white,#feffe2);
+}
+
+.topo input[name="pesquisar"]:hover{
+    background: #fcfcfc;
+    transition: .4s;
+}
+
+.topo input[name="pesquisar"]:focus{
+    background: linear-gradient(85deg, white,#feffe2,white);
+    box-shadow: 6px 5px #aaa;
+    transition: .4s;
+}
+
+.icon{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/sprite_base_cinza.png");
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 2px 1px yellow;
+}
+
+.icon:hover{
+    background-image: url("../img/sprite_base.png");
+    transition: .4s;
+}
+
+.topo #filtros{
+    top: 100px;
+}
+
+.topo .help{
+    background-position: -28px -68px;    
+    left: 21em;
+    top:2em;
+    z-index: 5;
+}
+
+.topo .lupa{
+
+    border-radius: 20px;
+    background-position: -3px -186px;
+    top: -33px;
+    left: 2px;
+    box-shadow: 3px 2px #ddd;
+    border-top: 2px;
+    border-top-style: solid;
+    border-top-color: blue;
+    width: 65px;
+    height: 29px;
+    background-color: #fafafa;
+    background-size: 260px 240px;
+}
+
+.topo .lupa:hover{
+    border-left: 3px;
+    border-left-style: solid;
+    border-left-color: yellow;
+    background-position: -16px -178px;  
+    transition: .4s;
+    box-shadow: 3px 2px yellow;
+}
+
+.topo .close{
+    background-position: -166px -26px;
+    box-shadow: 1px 1px white;
+}
+.topo .close:hover{
+    background-color: #eeeefa;
+}
+
+.topo .perfil{
+    background-position: -34px -36px;
+    background-size: 321px 300px;
+    padding: 6px 6px;
+    top:-1em;
+    margin-right: 1em;
+    box-shadow: 1px 2px blue;
+}
+
+.topo fieldset{
+    width: 100%;
+    max-width: 22em;
+    border:1px dashed red;
+    background-color: #eee;
+    padding-bottom: 2em;
+}
+
+.topo h2{
+    width: 70%;
+    margin: auto;
+    padding: 5px;
+    border:1px solid red;
+    text-align: center;
+}
+
+.topo #filtros{
+    top: 52px;
+    left: 90px;
+    border-radius: 6px;
+    box-shadow: 5px 5px #888;
+    border: 1px solid white;
+    border-top: 2px solid #aaa;
+    border-left: 2px solid #bbb;
+    width: 80%;
+    margin: auto;
+    display: none;
+}
+
+.topo form select,
+.topo form input{
+    margin-left: 20px;
+    display: block;
+    width: 80%;
+    padding: 3px;
+    font-size: 1.2em;
+    margin-top: 5px;
+    margin-top: 7px;
+    border: 1px solid white;
+    border-radius: 6px;
+    border-bottom-width: 2px;
+    border-top-color: yellow;
+    border-left-color: yellow;
+    box-shadow: 2px 4px #aaa;
+
+
+}
+
+.topo form input[type="text"], 
+.topo form input[type="password"]{
+    width: 167px;   
+}
+
+input[value="Cadastre-se"],
+input[value="Entrar"]{
+    border: none;
+    background: linear-gradient(to top, #0aa , #08c);
+    margin: 0 5px;
+    padding: 7px 5px;
+    color: white;
+    font-size: 1.2em;
+    text-shadow: 1px 1px #888;
+    box-shadow: 1px 1px #888;
+    top: -7px;
+    cursor: pointer;
+}
+
+.topo #cadastro{
+    position: relative;
+    display: block;
+    float: right;
+    background-color: red;
+    z-index: 5;
+    margin-right: -17em;
+    margin-top: 2.5em;
+}
+
+
+
+

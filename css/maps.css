@@ -1,0 +1,118 @@
+*{
+    font-size: 10px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*Seção de id*/
+#map{
+    margin: auto;
+    width: 95%;
+    height: 600px;
+}
+
+#foto{
+    display: none;
+}
+
+#formCadastroLixo{   
+    display: block;
+    width: 75%;
+    margin: auto;
+    color: #cccccc;
+    border: 1px solid red;
+    max-width: 600px;
+}
+
+/*seção class*/
+.divControlMap{
+    margin: auto;
+    border: 1px dashed blue;
+    color: white;
+}
+
+.divControlMap p{
+    width: 88%;
+    border: 1px solid red;
+    padding: 5px 10px;
+    margin-bottom: 1px;
+    margin-top: 2px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 3px;
+    background-size: 100% 530%;
+    background-position-x: 0px;
+}
+
+.controlMapHead{
+    background-color: #fafafa;
+    color: black;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.controlMapDetalhes{
+    background: url("../img/fundo_control_map_hover.jpg") no-repeat;
+    background-position-y: 0px;
+}
+
+.controlMapSolucionar{
+    background: url("../img/fundo_control_map_hover.jpg") no-repeat;
+    background-position-y: -33px;
+}
+
+.controlMapAtualizar{
+    background: url("../img/fundo_control_map_hover.jpg") no-repeat;
+    background-position-y: -64px;
+}
+
+.controlMapExcluir{
+    background: url("../img/fundo_control_map_hover.jpg") no-repeat;
+    background-position-y: -95px;
+}
+
+.divControlMap p:hover{
+    cursor: pointer;
+    background: url("../img/fundo_control_map.jpg") no-repeat;
+    background-size: 100% 100%;
+    transition: .6s;
+    color: yellow;
+    text-shadow: 3px 3px 3px red;
+}
+
+div{
+    width: 95%;
+    margin: auto;
+    position: relative;
+}
+
+input, label{
+    font-size: 1.3em;
+}
+
+#formCadastroLixo label{
+    background-color: black;
+    display: inline-block;
+    width: 4em;
+    padding: 3px 10px 3px 10px;
+    cursor: pointer;
+    color: red;
+}
+
+#formCadastroLixo input{
+    width: 100%;
+    max-width: 56%;
+}
+
+#formCadastroLixo .minInput{
+    width: 8em;
+}
+
