@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Linket - Maps</title>
+        <meta charset="UTF-8"/>
+        <script type="text/javascript" src="js/TAG.js"></script>
+        <script type="text/javascript" src="js/map.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/maps.css"/>
+    </head>
+    <body>
+        <section>
+            <div>            
+                <h1>Menu</h1>
+            </div>
+            <div>
+                <form id="formCadastroLixo">
+                    <label for="rua">Rua: </label>
+                    <input type="text" id="rua" name="rua" placeholder="Informe a rua"/>
+                    <label for="numero">Numero: </label>
+                    <input type="text" id="numero" class="minInput" name="numero" placeholder="Informe o número"/>
+                    <br/>
+                    <label for="cidade">Cidade: </label>
+                    <input type="text" id="cidade" name="cidade" placeholder="Informe a ciadade"/>
+                    <label for="estado">Estado: </label>
+                    <input type="text" id="estado" class="minInput" name="estado" placeholder="Informe o estado"/>
+                    <br/>
+                    <label for="bairro">Bairro: </label>
+                    <input type="text" id="bairro" name="bairro" placeholder="Informe o bairro"/>
+                    <label for="cep">Cep: </label>
+                    <input type="text" id="cep" class="minInput" name="cep" placeholder="Informe o CEP"/>
+                    <br/>
+                    <label for="foto">Foto: </label>
+                    <input type="file" id="foto" name="foto" />
+                    <label for="descricao">Descrição: </label>
+                    <br/>
+                    <textarea name="descricao" id="descricao" placeholder="Adicione uma descrição" rows="10" cols="50" maxlength="500"></textarea>
+                    <br/>
+                    <input type="reset" value="Limpar campos">
+                    <input type="button" value="Registrar"/>            
+                </form>
+            </div>
+            <p id="coords">I am here</p>
+            <p id="map"></p>
+        </section>
+    </body>
+</html>

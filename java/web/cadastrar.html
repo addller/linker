@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Linker - Novo cadastro</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/padrao.css">
+        <script src="js/TAG.js"></script>
+        <script src="js/topo.js"></script>
+        <script src="js/cadastra.js"></script>
+    </head>
+    <body> 
+        <script> trigger();</script>
+        <nav class="topo"> 
+            <figure class="logo">
+                <img src="img/logo_linker_eeeeff.png" alt="logo"/>
+                <figcaption>
+                    <h2>Linker</h2>
+                    <h3>Ligando Pessoas</h3>
+                </figcaption>
+            </figure>            
+            <span class="icon help" onclick="exibirFiltros()"></span>
+            <span class="icon perfil"></span>
+            <input type="button" value="Cadastre-se" onclick="exibirCadastro()"/>
+            <input type="button" value="Entrar">
+            <div id="pesquisar">
+                <input name="pesquisar" type="text" placeholder="Pesquisar"/>          
+                <span class="icon lupa"></span>
+            </div>
+            <fieldset id="filtros">
+                <form id="formFiltros">
+                    <span class="icon close" onclick="fecharFormFiltros()"></span>   
+                    <h2>Filtros  </h2>
+                    <input name="pesquisar" type="text" placeholder="Pesquisar"/> 
+                    <select>
+                        <optgroup label="Classificar por">
+                            <option value="avaliacao">Avaliação</option>
+                            <option value="visualizacao">Visualizações</option>
+                            <option value="relevancia">Relevância</option>
+                        </optgroup>
+                    </select>
+                    <select>
+                        <optgroup label="Tema">
+                            <option value="filme">Filmes</option>
+                            <option value="politica">Politica</option>
+                            <option value="economia">Economia</option>
+                            <option value="ensino">Ensino</option>
+                            <option value="academico">Acadêmico</option>
+                            <option value="turismo">Turismo</option>
+                            <option value="curiosidade">Curiosidades</option>
+                            <option value="infantil">Infantil</option>
+                            <option value="livre">"Livre"</option>
+                        </optgroup>
+                    </select>
+                    <select>
+                        <optgroup label="Tempo de Envio">
+                            <option value="qualquer">Qualquer</option>
+                            <option value="ano">Ano</option>
+                            <option value="mes">Mês</option>
+                            <option value="semana">Semana</option>
+                            <option value="dia">Dia</option>
+                            <option value="hora">Hora</option>
+                        </optgroup>
+                    </select>     
+                    <input type="reset" value="Restaurar"/>
+                    <input type="submit" value="Filtrar"/>
+                </form>
+            </fieldset>   
+            <fieldset id="cadastro">  
+                <span class="icon close" onclick="fecharFormCadastro()"></span>   
+                <h2>Cadastre-se</h2>
+                <form id="formCadastro">
+                    <label for="forLoginName">Nome de Login:</label><input id="forLoginName" name="loginName" type="text"/> 
+                    <label for="forEmail">Email:</label><input id="forEmail" name="email" type="text"/> 
+                    <label for="forPass">Senha:</label><input id="forPass" name="pass" type="password"/> 
+                    <input type="button" value="Enviar" onclick="cadastrar()"/> 
+                </form>
+                <p>Termos de uso</p>
+            </fieldset>
+            <div>
+                <hgroup >
+                    <h1>Linker</h1>
+                    <h2>Ligando Pessoas</h2>
+                    <h3>Compartilhe conhecimento e diversão</h3>
+                    <h4>Olavo tem razão</h4>
+                </hgroup>                
+            </div>
+        </nav>  
+        <nav id="menu">
+            <ul class="menu">
+                <li>
+                    Tendências                   
+                </li>
+                <li>
+                    Roll da Fama
+                </li>
+                <li>
+                    Ajuda?
+                    <ul>
+                        <li>
+                            Dicas
+                        </li>
+                        <li>
+                            Termos de Uso  
+                        </li>   
+                        <li>
+                            Sobre Nós?
+                        </li>
+                    </ul>
+                </li>                
+            </ul>
+            <div>
+                <ul>
+                    <li>
+                        #userName# 
+                        #email#
+                        <ul>
+                            <li>
+                                EditarPerfil
+                            </li>
+                            <li>Sair</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+        <p id="metrica">Tatu</p>
+    </body>
+</html>

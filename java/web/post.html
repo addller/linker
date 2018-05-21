@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Linker - Criar Topico</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="js/TAG.js"></script>
+        <script src="js/topo.js"></script>
+        <script src="js/posta.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/padrao.css"/>
+        <link rel="stylesheet" type="text/css" href="css/post.css"/>
+    </head>
+    <body>
+        <div id="controleEsquerdo">
+            <nav>
+                <button class="accordion">Section 1</button>
+                <div class="panel">
+                    <h1>"Ai minha paciência"</h1>
+                    <p>Lorem ipsum...</p>
+                </div>
+
+                <button class="accordion">Section 2</button>
+                <div class="panel">
+                    <p>Lorem ipsum...</p>
+                </div>
+
+                <button class="accordion">Section 3</button>
+                <div class="panel">
+                    <p>Lorem ipsum...</p>
+                </div>
+            </nav>
+        </div>
+
+        <script src="js/loadAcoordion.js"></script>
+        <section>
+            <nav>
+
+            </nav>
+            <div>
+                <fieldset>
+                    <hgroup>
+                        <h2>Crie uma nova Postagem</h2>
+                        <h3 id="tituloPost">Novo Post</h3>
+                    </hgroup>
+                    <figure>
+                        <img src="#imgPerfil#" alt="#imgAltPerfil#"/>
+                        <figcaption>
+                            <h2>#user#</h2>
+                            <h3>#email#</h3>
+                            <input type="button" value="sair" onclick="sair()">
+
+                        </figcaption>
+                    </figure>
+                </fieldset>
+
+                <fieldset id="metrica">
+                    <script src="js/metrica.js"></script>
+                    <form id="formPost">
+                        <p>  
+                            <input id="fileImagePost" type='file' accept='image/*' name='imagePost' onchange="alterarImagemPost()"/>
+                            <label id="imgPost" class="imgPost" for="fileImagePost"></label>
+                            <iframe width="161" height="100" src="https://www.youtube.com/embed/hgoo9hrZFO0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </p>
+                        <p>
+                            <label for="forTitulo">Informe o assunto</label>
+                            <input id="forTitulo" type="text" placeholder="Assunto" name="txtTitulo" onkeyup="atualizarTitulo()"/> 
+                        </p>
+                        <p id="urlVideo">
+                            <label for="forUrlVideo"> Url de vídeo</label>
+                            <input id="forUrlVideo" type="text" name="urlVideo" placeholder="https ou http://exemplo.com/xyz_..." onchange="validarUrl()"/>
+                            <span class="validate"></span>
+                            <input type="button" value="+" onclick="adicionarUrlVideo()"/>
+                        </p>
+                        <p id="urlImagem">
+                            <label for="forUrlImagem"> Url de imagem </label>
+                            <input  id="forUrlImagem" type="text" name="urlImagem" placeholder="https ou http://exemplo.com/xyz_..." onchange="validarUrl()"/>
+                            <span class="validate"></span>
+                            <input  type="button" value="+" onclick="adicionarUrlImagem()"/>
+                        </p>
+                        <p id="urlSite">
+                            <label for="forUrlSite"> Url para outros sites</label>
+                            <input id="forUrlSite" type="text" name="urlSite" placeholder="https ou http://exemplo.com/xyz_..." onchange="validarUrl()"/>
+                            <span class="validate"></span>
+                            <input type="button" value="+" onclick="adicionarUrlSite()"/>
+                        </p>
+                        <div>
+                            <p>
+                                Adicione uma descrição sobre o conteúdo que esta criando, para facilitar
+                                a compreensão de que irá visualizá-lo.
+                                <textarea name="txtDescricao" maxlength="1000" rows="8" placeholder="Adicione uma descrição">descrição</textarea>
+                            </p>
+                            <p>
+                                Caso você queira fazer um agradecimento especial ou até mesmo indicar um patrocinador.
+                            <p>
+                                <textarea name="txtPatrocinador" maxlength="200" rows="4" placeholder="Seus Patrocinadores">patrocinadores</textarea>
+                            </p>
+                        </div>
+                        <input type="reset" value="Limpar formulário" onmouseup="limparValidate()"/>
+                        <input type="button" value="Postar" onclick="postar()"/>   
+                    </form>
+                </fieldset>
+            </div>
+            <aside>               
+                <div>
+                    <input class="ajusteFrame" type="hidden" name="valor_do_ajuste" value="10"/>
+                    <script src="js/ajusteFrame.js"></script>
+                    <iframe src="https://www.youtube.com/embed/4p0DsVPkyZg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>            
+                </div>
+            </aside>
+        </section>
+    </body>
+</html>
