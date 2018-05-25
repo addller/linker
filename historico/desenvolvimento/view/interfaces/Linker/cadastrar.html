@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Linker</title>
+
+<link rel="stylesheet" href="css/style_cadastrar.css">
+
+</head>
+
+<body>
+        <div class="logo">
+                <a href="index.html"><img src="img/logo.png" id='logo' width="300px"></a>
+        </div>
+
+        <div class="divCadastrar">
+            <img src="img/user.ico" id="iconeUser">
+            <h1>Cadastrar</h1>
+                <form class="form-area" method="POST" action="">
+                    <div class="textCadastro">
+                        <div class="textcadastrar"><p>Login: <input type="text" placeholder="Login" name="" value="" required></p></div>
+                        <div class="textcadastrar"><p>Senha: <input type="password" placeholder="Senha" name="" value=""  required></p></div>
+                        <div class="textcadastrar"><p>Confirme a senha: <input type="password" placeholder="Digite a mesma senha" name="" value=""  required></p></div>
+                        <div class="textcadastrar"><p>Email: <input type="email" placeholder="Email" name="" value=""  required></p></div>
+                        <div class="textcadastrar"><p>Nome completo: <input type="text" placeholder="Nome completo" name="" value=""  required></p></div>
+                        <div class="textCampoDS"><p>Sexo: 
+                                <select id="sexo" name="sexo" id="campoSexo" required>
+                                        <option disabled selected value="sexo">Sexo</option>
+                                        <option value="masculino">Masculino</option>
+                                        <option value="femenino">Femenino</option>
+                                </select>&nbsp&nbsp
+                                Data de nascimento: <input type="date" id="campoData" max="9999-12-31" name="" value="" required></p>
+                        </div>
+                    </div>
+                    
+                    <input class="btn" type="submit" name="" value="CADASTRAR">
+
+                </form>
+            </div>
+</body>
+
+</html>

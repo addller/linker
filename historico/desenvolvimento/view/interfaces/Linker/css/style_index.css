@@ -1,0 +1,211 @@
+*{
+margin: 0;
+padding:0;
+font-family: sans-serif;
+}
+
+body{
+    background: #F2F2F2;
+}
+
+
+
+/* Menu */
+.menu{
+    background-color: #222;
+    font-family: 'Arial';
+    height: 70px;
+}
+
+#imglogado{
+    position: absolute;
+    width: 50px; 
+    height: 50px;
+    left: 96%;
+    top: 10px;
+}
+
+
+.logo img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+#search-box{
+    position: initial;
+    background-color: #222;
+    width: 100%;
+    margin-left: -5px;
+}
+
+#logo{
+    padding: 13px 10px;
+    float: left;
+    
+}
+
+
+.menu ul{
+    list-style: none;
+    position: relative;
+    bottom: 12px;
+    right: 5%;
+}
+
+.menu ul li{
+   width: 150px;
+   float: right;
+}
+
+.menu a{
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+    
+}
+
+
+.menu ul ul{
+position: absolute;
+visibility: hidden;
+}
+
+.menu ul li:hover ul{
+    visibility: visible;
+}
+
+.menu a:hover{
+background-color: #f4f4f4;
+color: #555;
+}
+
+.menu ul ul li{
+    float: none;
+    border-bottom: solid 1px #ccc;
+}
+
+.menu ul ul li a{
+    background-color: #069;
+}
+
+/* Estilo da barra de pesquisa*/
+#search-box {
+    position: relative;
+    margin: 0;
+}
+
+
+#search-form {
+    float: center;
+    width: 40%;
+    left: 10%;
+    top: 20px;
+    position: relative;
+    height: 30px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+    overflow: hidden;
+}
+#search-text {
+    font-size: 14px;
+    color: #ddd;
+    border-width: 0;
+    background: transparent;
+}
+
+#search-box input[type="text"] {
+    width: 100%;
+    padding: 5px 0 12px 1em;
+    color: #333;
+    outline: none;
+}
+
+#search-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 80px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
+    border-width: 0;
+    background-color: #4d90fe; /*--define a cor do botão Buscar--*/
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+
+
+/* Label*/
+label[for="bt_menu"]{
+    padding: 5px;
+    background-color: #222;
+    color: #fff;
+    font-family: "Arial";
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+#bt_menu{
+    display: none;
+}
+
+label[for="bt_menu"]{
+    display: none;
+}
+
+.logadolateral{
+    font-size: 12px;
+    float:left; /*define que o elemento deve flutuar à direita*/
+    padding: 10px; /*espaço entre a borda e o conteúdo do elemento*/
+    width: 15%; /*largura*/   
+    text-align: center; /*alinhamento do texto*/ 
+    
+}
+
+#lateral{
+    font-size: 17px;
+    float:left; /*define que o elemento deve flutuar à direita*/
+    background-color: #95dd97; /*cor de fundo*/
+    padding: 2%; /*espaço entre a borda e o conteúdo do elemento*/
+    width: 15%; /*largura*/   
+    top: 230px; 
+    position: fixed;
+}
+
+#imgPessoaLogada{
+    width: 120px;
+    height: 120px;
+}
+
+#conteudo{
+    padding: 2; /*espaço entre a borda e o conteúdo do elemento*/
+    width: 79%; /*largura*/
+    float:right; /*define que o elemento deve flutuar à esquerda*/
+    background-color: #ebebeb; /*cor de fundo*/
+    font-size: 17px;
+}
+
+
+
+
+
+
+
+
+
+
