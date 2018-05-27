@@ -18,15 +18,15 @@ language plpgsql;
 --select registrarStatusMembro(200, 'moderador', 'moderador da plataforma') as id;
 
 
-create or replace function _consultarStatusMembro(_tipo citext) 
+create or replace function _consultarStatusMembro(_tipo character varying) 
     returns setof status_membro as
     $$
     	declare
     		newId integer;
     	begin
-            return query select * from status_membro where status_membro.tipo = _tipo limit 1;   
+            return query select * from status_membro where status_membro.tipo = _tipo::citext limit 1;   
 		end
     $$
 language plpgsql;
-select * from status_membro;
---select _consultarStatusMembro('moderador');
+
+--select * from  _consultarStatusMembro('membro');
