@@ -1,0 +1,8 @@
+--idade mínima para se registrar na plataforma: 18 anos
+
+--date_part('years',age(nascimento)) > 17
+--teste -> select registrarMembro('leila', '2000-05-25'::timestamp::date, 'F', 'leila', 'leila', 'leila') as id;
+--alterar a data para testar a restrição de idade
+
+
+--##################################################################################################################################

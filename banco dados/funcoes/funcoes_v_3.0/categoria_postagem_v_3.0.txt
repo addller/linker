@@ -1,0 +1,16 @@
+create or replace function registrarCategoriaPostagem(
+    _id_postagem bigint,
+    _id_categoria_partilhada bigint    
+    ) 
+    returns integer as
+    $$
+    	declare
+    		newId integer;
+    	begin
+            insert into categoria_postagem(id_categoria_partilhada, id_postagem)
+            values(_id_categoria_partilhada, _id_postagem) returning categoria_postagem.id into newId;
+			return newId;         
+		end
+    $$
+language plpgsql;  
+select registrarCategoriaPostagem(3,1) as id;

@@ -1,0 +1,20 @@
+create or replace function registrarNotificacaoPostagem(
+        _id_destinatario bigint,
+    	_id_postagem bigint
+	) 
+    returns bigint as
+    $$
+    	declare        
+        	newId bigint;
+    	begin 
+        	insert into notificacao_postagem(id_postagem, id_destinatario) 
+            	values(_id_postagem, _id_destinatario) returning notificacao_postagem.id into newId;
+			return newId; 
+		end
+    $$
+language plpgsql;
+--select * from membro;--3, 6, 7
+--select * from postagem;-- 3,4,5,6,7,8
+--select registrarNotificacaoPostagem(7,7) as id;
+--select * from notificacao_postagem
+

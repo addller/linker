@@ -1,2 +1,6 @@
 ﻿18-05-2018
 Tabelas criadas conforme DER v2.2
+
+26-05-2018
+Algumas tabelas foram criadas e outras foram atualizadas conforme DER versao 3.0
+Alterações estruturais significativas foram realizadas

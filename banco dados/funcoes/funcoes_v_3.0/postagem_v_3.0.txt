@@ -1,0 +1,69 @@
+create or replace function registrarPostagem(
+    _descricao character varying,
+    _vetor_url_site  character varying[],
+    _vetor_url_video  character varying[],
+    _vetor_url_imagem  character varying[],
+    _palavra_chave  character varying,
+    _titulo  character varying,
+    _patrocinador  character varying,
+    _id_classificacao_etaria integer,
+    _id_membro_postante bigint
+    ) 
+    returns bigint as
+    $$
+    	declare
+    		newId bigint;
+    	begin
+            insert into postagem(
+                descricao, 
+                vetor_url_site,
+                vetor_url_video,
+                vetor_url_imagem,
+                palavra_chave,
+                titulo,
+                patrocinador,
+   				id_classificacao_etaria,
+                id_membro_postante
+				)
+            		values(
+                        _descricao, 
+                        _vetor_url_site, 
+                        _vetor_url_video,
+                        _vetor_url_imagem,
+                        _palavra_chave, 
+                        _titulo, 
+                        _patrocinador,
+    					_id_classificacao_etaria,
+                        _id_membro_postante
+                    ) 
+            	returning postagem.id into newId;
+			return newId;         
+		end
+    $$
+language plpgsql;
+  
+select registrarPostagem(
+                'descricao', 
+                array['url site','a','b'],
+                array['url video','c','d'],
+   				array['url imagem','e','f'],
+                'palavra_chave',
+                'titulo',
+                'patrocinador',
+   				1,
+                3
+) as id;
+				
+				
+				
+select registrarPostagem(
+                'descricao', 
+                null,
+                null,
+   				null,
+                null,
+                'titulo',
+                null,
+   				1,
+                3
+) as id;

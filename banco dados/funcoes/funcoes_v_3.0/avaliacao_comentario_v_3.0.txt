@@ -1,0 +1,82 @@
+
+--esta funcao retorna o id de um comentário mais um três valores possíveis: REGISTRA, REMOVE ou TROCA a avaliação
+
+create or replace function registrarAvaliacaoComentario(
+    _id_avaliador bigint,
+    _id_comentario bigint,
+    _is_positiva boolean
+    ) 
+    returns table(_id bigint, acao text) as
+    $$
+    	declare
+    		newId bigint;
+            retorno_atualizacao text;
+    	begin
+        select id into newId from avaliacao_comentario 
+        	where avaliacao_comentario.id_avaliador = _id_avaliador
+            	and avaliacao_comentario.id_comentario = _id_comentario limit 1;
+        if(newId is null) then        	
+			insert into avaliacao_comentario(id_avaliador, id_comentario,is_positiva)
+        		values(_id_avaliador, _id_comentario,_is_positiva) returning avaliacao_comentario.id into newId; 
+            if(_is_positiva) then
+            	update comentario set avaliacoes_positivas = avaliacoes_positivas + 1 where comentario.id = _id_comentario;
+            else
+            	update comentario set avaliacoes_negativas = avaliacoes_negativas + 1 where comentario.id = _id_comentario;
+            end if;
+        	return query select newId, 'REGISTRA';
+       	else
+        	select atualizacao into retorno_atualizacao from _atualizarAvaliacaoComentario( newId, _id_comentario, _is_positiva) as atualizacao;
+        		if(retorno_atualizacao = 'REMOVE') then
+            		delete from avaliacao_comentario where avaliacao_comentario.id = newId;
+            	end if; 
+                return query select newId, retorno_atualizacao;
+            end if;
+		end
+    $$
+language plpgsql; 
+--delete from avaliacao_comentario;
+--update comentario set avaliacoes_positivas = 0, avaliacoes_negativas = 0;
+--registrarAvaliacaoComentario(_id_avaliador, _id_comentario, _is_positiva) 
+--select * from registrarAvaliacaoComentario(3,1,true) as avaliacao;
+--select * from registrarAvaliacaoComentario(6,1,true) as avaliacao;
+--select * from registrarAvaliacaoComentario(7,1,true) as avaliacao;
+--select * from registrarAvaliacaoComentario(17,1,true) as avaliacao;
+--select * from comentario;--1,4,5,6
+--select * from avaliacao_comentario;
+--select * from membro;--6,7,3,17
+
+
+--###############################################################################################
+-- esta função deve ser usadada dentro da registrarAvaliacaoComentario, pois são complementares
+
+
+create or replace function _atualizarAvaliacaoComentario(
+    _id_avaliacao_comentario bigint,
+    _id_comentario bigint,
+    _is_positiva boolean
+    ) 
+    returns text as
+    $$
+    	declare
+            preAvaliacao boolean;
+    	begin 
+        	select is_positiva into preAvaliacao from avaliacao_comentario where avaliacao_comentario.id = _id_avaliacao_comentario limit 1;
+        	if(_is_positiva and not preAvaliacao) then
+            	update comentario set avaliacoes_positivas = avaliacoes_positivas + 1, avaliacoes_negativas = avaliacoes_negativas - 1
+                	where comentario.id = _id_comentario;
+            elsif(not _is_positiva and preAvaliacao) then
+            	update comentario set avaliacoes_positivas = avaliacoes_positivas - 1, avaliacoes_negativas = avaliacoes_negativas + 1
+                	where comentario.id = _id_comentario;
+            else
+            	if(_is_positiva) then
+                	update comentario set avaliacoes_positivas = avaliacoes_positivas - 1 where comentario.id = _id_comentario;
+                else
+                	update comentario set avaliacoes_negativas = avaliacoes_negativas - 1 where comentario.id = _id_comentario;
+                end if;
+             	return 'REMOVE';
+            end if;
+            update avaliacao_comentario set is_positiva = _is_positiva where avaliacao_comentario.id = _id_avaliacao_comentario;
+            return 'TROCA';
+		end
+    $$
+language plpgsql; 

@@ -1,0 +1,17 @@
+create or replace function registrarCategoria(
+    _tipo character varying,    
+    _descricao character varying
+    ) 
+    returns integer as
+    $$
+    	declare
+    		newId integer;
+    	begin
+            insert into categoria(tipo, descricao)
+            values(_tipo, _descricao) returning categoria.id into newId;
+			return newId;         
+		end
+    $$
+language plpgsql;  
+--select registrarCategoria('infantil','criancas até 6 anos') as id;
+--select registrarCategoria('Política','arte ou ciência de governar') as id;

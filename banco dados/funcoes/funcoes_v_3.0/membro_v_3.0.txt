@@ -1,0 +1,80 @@
+create or replace function registrarMembro(
+    _nome character varying,    
+    _nascimento date,
+    _sexo char,
+    _login_name character varying,
+    _pass bytea,
+    _email character varying    
+    ) 
+    returns bigint as
+    $$
+    	declare
+    		newId bigint;
+    	begin
+            insert into membro(login_name, pass, email, sexo, nascimento, nome)
+            values(_login_name, _pass, _email, _sexo, _nascimento, _nome) returning membro.id into newId;
+			return newId;         
+		end
+    $$
+language plpgsql;
+  
+select registrarMembro('_nome', now()::Date, 'F', 'alra', '_pass', 'alra') as id;
+
+
+--###################################################################################################
+
+
+create or replace function _editar_perfil(
+    _id_membro bigint,
+    _nome character varying,    
+    _nascimento date,
+    _sexo char,
+    _login_name character varying,
+    _pass bytea,
+    _email character varying    
+    ) 
+    returns void as
+    $$
+    begin
+    	update membro set 
+        	login_name = _login_name,
+            pass = _pass,
+            email = _email, 
+            sexo = _sexo,
+            nascimento = _nascimento,
+            nome = _nome
+  				where membro.id = _id_membro;
+    	end
+    $$
+language plpgsql;
+
+--select * from _editar_perfil(3,'caroline', now()::Date, 'F', 'caroline', '_pass', 'caroline');
+--select * from membro;
+
+
+--###################################################################################################
+
+
+create or replace function _logar(
+   	_login_name character varying,
+    _pass bytea
+    ) 
+    returns table(
+        _id bigint,
+        _nome character varying,
+        _nascimento date,
+        _sexo char
+    ) as
+    $$
+    begin
+    	return query select id, nome::character varying, nascimento, sexo::char from membro where login_name = _login_name and pass = _pass;
+    end
+    $$
+language plpgsql;
+--update membro set nome = membro.login_name, pass = membro.login_name::bytea;
+--select * from _logar('ana','ana') as login;
+
+
+--###################################################################################################
+
+

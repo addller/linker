@@ -1,0 +1,23 @@
+create or replace function registrarInscrito(
+    _id_registrando bigint, 
+    _id_registrado bigint
+	) 
+    returns boolean as
+    $$
+    	declare
+        	isRegistrado bigint;
+    	begin 
+        	if(_id_registrando <> _id_registrado) then 
+            	select _id_registrado into isRegistrado from inscrito 
+            		where inscrito.id_registrado = _id_registrado and inscrito.id_registrando = _id_registrando limit 1;                
+                if(isRegistrado is null) then
+            		insert into inscrito(id_registrando, id_registrado) values(_id_registrando, _id_registrado);
+                	return true;
+                end if;	
+            end if; 
+            return false;
+		end
+    $$
+language plpgsql;
+select registrarInscrito(3,6) as isInscrito;
+

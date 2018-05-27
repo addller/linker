@@ -1,0 +1,67 @@
+--Obs.: uma mesma pessoa não pode fazer a mesma denuncia em relação a uma postagem
+--select * from membro;--3
+--select * from postagem;--3
+--select * from tipo_denuncia;--3
+--select * from denuncia;
+
+create or replace function registrarDenuncia(
+    _id_denunciante bigint,
+    _id_postagem bigint,
+    _id_tipo_denuncia integer,
+    _relato character varying
+	) 
+    returns bigint as
+    $$
+    	declare
+    		newId bigint;
+    	begin
+        	select id into newId from denuncia 
+            		where denuncia.id_denunciante = _id_denunciante
+                    	and denuncia.id_postagem = _id_postagem
+                        	and denuncia.id_tipo_denuncia = _id_tipo_denuncia limit 1;
+                            
+            	if(newId is null) then 
+            		insert into denuncia(id_denunciante, id_postagem, id_tipo_denuncia, relato) 
+            			values(_id_denunciante, _id_postagem, _id_tipo_denuncia, _relato) returning denuncia.id into newId;
+				end if;
+            return newId;         
+		end
+    $$
+language plpgsql;
+--select * from denuncia;
+--select registrarDenuncia(6,4,3,'relato aqui');
+--select registrarDenuncia(3,3,3,null);
+
+
+--#########################################################################################################################
+
+
+create or replace function _denunciar(
+    _id_denunciante bigint,
+    _id_postagem bigint,
+    _id_tipo_denuncia integer,
+    _relato character varying
+	) 
+    returns table(id_denuncia bigint, is_suspenso boolean) as
+    $$
+    	declare
+    		newId bigint;
+            total_denuncias integer;
+            suspensa boolean;
+    	begin
+        	select id into newId from registrarDenuncia(
+    			_id_denunciante,
+    			_id_postagem,
+    			_id_tipo_denuncia,
+   				_relato
+            ) as id; 
+             SELECT count(id) INTO total_denuncias FROM denuncia where denuncia.id_postagem = _id_postagem;
+             suspensa = total_denuncias > 49;
+            if(suspensa) then
+            	update postagem set is_suspensa = true;
+            end if;
+           	return query select newId, suspensa;        
+		end
+    $$
+language plpgsql;
+select * from postagem;

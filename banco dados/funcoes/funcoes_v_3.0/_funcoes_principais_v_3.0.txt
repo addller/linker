@@ -1,0 +1,86 @@
+create or replace function _postar(
+    _descricao character varying,
+    _vetor_url_site  character varying[],
+    _vetor_url_video  character varying[],
+    _vetor_url_imagem  character varying[],
+    _palavra_chave  character varying,
+    _titulo  character varying,
+    _patrocinador  character varying,
+    _id_classificacao_etaria integer,
+    _id_membro_postante bigint
+    ) 
+    returns bigint as
+    $$
+    	declare
+    		new_postagem bigint;
+            _inscrito bigint;
+    	begin
+        	select id into new_postagem from registrarPostagem(
+    			_descricao,
+    			_vetor_url_site,
+    			_vetor_url_video,
+    			_vetor_url_imagem,
+    			_palavra_chave,
+    			_titulo,
+    			_patrocinador,
+    			_id_classificacao_etaria,
+    			_id_membro_postante
+    		) as id;
+            
+            for _inscrito in select id_registrado from inscrito where id_registrando = _id_membro_postante loop
+            	perform registrarNotificacaoPostagem(_inscrito,new_postagem);
+            end loop;             
+			return new_postagem;         
+		end
+    $$
+language plpgsql;
+
+create or replace function _verificar_notificacao_postagem(
+    _id_destinatario bigint,
+    _pre_start bigint,
+    _limit bigint
+    ) 
+    returns setof notificacao_postagem as
+    $$
+    	begin
+        	return query select * from notificacao_postagem where id_destinatario = _id_destinatario
+            and id > _pre_start and is_pendente limit _limit;      
+		end
+    $$
+language plpgsql;
+--update notificacao_postagem set is_pendente = false where id = 19;
+--select * from _verificar_notificacao_postagem(7,17,2) as notificacao_postagem;
+
+
+--######################################################################################################
+
+
+create or replace function _verificar_notificacao_postagem(
+    _id_destinatario bigint,
+    _pre_start bigint,
+    _limit bigint
+    ) 
+    returns setof notificacao_postagem as
+    $$
+    	begin
+        	return query select * from notificacao_postagem where id_destinatario = _id_destinatario
+            and id > _pre_start and is_pendente limit _limit;      
+		end
+    $$
+language plpgsql;
+--update notificacao_postagem set is_pendente = false where id = 19;
+--select * from _verificar_notificacao_postagem(7,17,2) as notificacao_postagem;
+
+
+--######################################################################################################
+
+create or replace function _if_ternario(boolean, anyelement, anyelement) returns anyelement as
+$$
+  select case when $1 is true then $2 else $3 end;
+$$
+language 'sql';
+
+
+--######################################################################################################
+
+

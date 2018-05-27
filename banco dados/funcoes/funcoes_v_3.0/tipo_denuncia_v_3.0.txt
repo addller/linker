@@ -1,0 +1,14 @@
+create or replace function registrarTipoDenuncia(_tipo character varying, _descricao character varying) 
+    returns integer as
+    $$
+    	declare
+    		newId integer;
+    	begin
+            insert into tipo_denuncia(tipo, descricao) values(_tipo, _descricao) returning tipo_denuncia.id into newId;
+			return newId;         
+		end
+    $$
+language plpgsql;
+
+--select registrarTipoDenuncia('Degradante','Humilha a condição humana') as id;
+--select registrarTipoDenuncia('Direitos Autorais','É um conjunto de prerrogativas conferidas por lei à pessoa física ou jurídica criadora da obra intelectual') as id;

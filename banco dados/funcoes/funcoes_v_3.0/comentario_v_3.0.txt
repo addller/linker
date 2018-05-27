@@ -1,0 +1,20 @@
+create or replace function registrarComentario(
+    _comentario character varying, 
+    _id_remetente bigint, 
+    _id_postagem bigint
+	) 
+    returns bigint as
+    $$
+    	declare
+    		newId bigint;
+    	begin
+            insert into comentario(comentario, id_remetente, id_postagem) 
+            	values(_comentario, _id_remetente, _id_postagem) returning comentario.id into newId;
+			return newId;         
+		end
+    $$
+language plpgsql;
+select * from postagem;--3
+select * from membro;--3
+select registrarComentario('self coment',3,3);
+select registrarComentario('outher coment',6,3);
