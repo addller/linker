@@ -16,3 +16,15 @@ create or replace function registrarStatusMembro(
 language plpgsql;
   
 select registrarStatusMembro(200, 'moderador', 'moderador da plataforma') as id;
+
+
+create or replace function _consultarStatus_membro(_tipo character varying) 
+    returns setof status_membro as
+    $$
+    	declare
+    		newId integer;
+    	begin
+            return query select * from status_membro where tipo = _tipo;   
+		end
+    $$
+language plpgsql;
