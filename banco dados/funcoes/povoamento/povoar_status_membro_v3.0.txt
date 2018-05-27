@@ -1,0 +1,3 @@
+select registrarStatusMembro(10,'Membro','Inscrito na Plataforma Linker');
+select registrarStatusMembro(100,'Patrocinador','Tipo especial de membro que possui acesso a alguns relatórios genéricos da aplicação');
+select registrarStatusMembro(200,'Moderador','Tipo especial de membro que possui atribuições de moderação');
