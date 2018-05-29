@@ -1,0 +1,22 @@
+create or replace function registrarImagem(
+    _id_album bigint,
+    _imagem bytea,
+    _extensao character varying,
+    _titulo character varying,
+    _escala character varying
+	)
+    returns bigint as
+    $$
+    	declare
+    		newId bigint;
+    	begin
+            insert into imagem(id_album, imagem, extensao,titulo,escala)
+            values(_id_album, _imagem, _extensao,_titulo,_escala) returning imagem.id into newId;
+			return newId;         
+		end
+    $$
+language plpgsql;
+
+select registrarImagem(2,'nova imagem','jpeg','perfil','pequenA');
+select registrarImagem(2,'nova imagem','jpeg','perfil','mEdia');
+select registrarImagem(2,'nova imagem','jpeg','perfil','gRande');
