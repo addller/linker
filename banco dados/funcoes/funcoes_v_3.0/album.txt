@@ -1,0 +1,18 @@
+create or replace function registrarAlbum(
+    _id_proprietario bigint,
+    _nome_album character varying,
+    ) 
+    returns bigint as
+    $$
+    	declare
+    		newId bigint;
+    	begin
+        	select id into newId from album where id_proprietario = _id_proprietario and nome_album = 'perfil';
+            if(newId is null) then
+            	insert into album(id_proprietario, nome_album) 
+                	values(_id_proprietario,_nome_album) returning membro.id into newId;	
+            end if;            
+			return newId;         
+		end
+    $$
+language plpgsql;
