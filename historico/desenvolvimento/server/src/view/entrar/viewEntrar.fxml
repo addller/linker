@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<fx:root maxHeight="464.0" maxWidth="814.0" prefHeight="464.0" prefWidth="814.0" styleClass="mainFxmlClass" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../padrao.css" />
+        <URL value="@viewEntrar.css" />
+        <URL value="@../cadastro/viewCadastro.css" />
+    </stylesheets>
+    <children>
+        <Pane layoutY="-1.0" prefHeight="541.0" prefWidth="900.0">
+            <children>
+                <ImageView fx:id="imgFundo" fitHeight="541.0" fitWidth="900.0" pickOnBounds="true" styleClass="lblLogar">
+                    <image>
+                        <Image url="@../../img/fundo_entrar.jpg" />
+                    </image>
+                </ImageView>
+                <HBox fx:id="hboxTopo" prefHeight="54.0" prefWidth="900.0">
+                    <children>
+                        <ImageView fitHeight="42.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Pane prefHeight="35.0" prefWidth="426.0">
+                            <children>
+                                <TextField fx:id="txtPesquisar" layoutY="2.0" maxWidth="422.0" prefHeight="25.0" prefWidth="413.0" promptText="Faça uma pesquisa" styleClass="txtPesquisar" />
+                                <ImageView fx:id="imgLupaPesquisa" fitHeight="24.0" fitWidth="35.0" layoutX="352.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../img/lupa.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                  <Button fx:id="btnCadastrar" mnemonicParsing="false" prefWidth="70.0" styleClass="btnTopo" text="Cadastrar" />
+                  <Button fx:id="btnHome" mnemonicParsing="false" prefWidth="70.0" styleClass="btnTopo" text="Home" />
+                        <Button fx:id="btnVoltar" mnemonicParsing="false" prefWidth="70.0" styleClass="btnTopo" text="Voltar" />
+                    </children>
+                </HBox>
+                <Pane layoutX="270.0" layoutY="79.0" prefHeight="287.0" prefWidth="360.0" style="-fx-background-color: rgba(50,50,50,.5);">
+                    <children>
+                        <ImageView fx:id="imgCadastro" fitHeight="54.0" fitWidth="70.0" layoutX="251.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/logado.png" />
+                            </image>
+                        </ImageView>
+                        <GridPane layoutX="29.0" layoutY="98.0" prefHeight="166.0" prefWidth="302.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="10.0" prefWidth="55.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="247.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="89.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="100.0" minHeight="7.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="179.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label prefWidth="178.0" text="Senha" GridPane.rowIndex="1" />
+                                <Label prefWidth="173.0" text="Login" />
+                                <TextField fx:id="txtLogin" prefHeight="30.0" prefWidth="213.0" promptText="Login Name" GridPane.columnIndex="1" />
+                                <PasswordField fx:id="txtSenha" promptText="Senha" text="aA12345h" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Button fx:id="btnEntrar" mnemonicParsing="false" prefHeight="25.0" prefWidth="261.0" styleClass="btnTopo" text="Entrar" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <GridPane.margin>
+                                        <Insets bottom="20.0" />
+                                    </GridPane.margin>
+                                </Button>
+                            </children>
+                        </GridPane>
+                        <ImageView fitHeight="18.0" fitWidth="83.0" layoutX="24.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/logo.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Label layoutX="647.0" layoutY="387.0" prefHeight="17.0" prefWidth="210.0" text="Termos de Uso" />
+            </children>
+        </Pane>
+    </children>
+</fx:root>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="464.0" maxWidth="814.0" prefHeight="464.0" prefWidth="814.0" styleClass="mainFxmlClass" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@viewMain.css" />
+        <URL value="@../padrao.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutY="-1.0" prefHeight="511.0" prefWidth="827.0">
+         <children>
+            <ImageView fx:id="imgFundo" fitHeight="510.0" fitWidth="850.0" layoutX="-1.0" pickOnBounds="true" styleClass="lblLogar">
+               <image>
+                  <Image url="@../../img/fundo_login.png" />
+               </image>
+            </ImageView>
+            <HBox fx:id="hboxTopo" prefHeight="54.0" prefWidth="826.0">
+               <children>
+                  <ImageView fitHeight="42.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="35.0" prefWidth="426.0">
+                     <children>
+                        <TextField fx:id="txtPesquisar" layoutY="2.0" maxWidth="422.0" prefHeight="25.0" prefWidth="413.0" promptText="Faça uma pesquisa" styleClass="txtPesquisar" />
+                        <ImageView fx:id="imgLupaPesquisa" fitHeight="24.0" fitWidth="35.0" layoutX="352.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/lupa.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Button fx:id="btnEntrar" mnemonicParsing="false" prefWidth="70.0" styleClass="btnTopo" text="Entrar" />
+                  <Button fx:id="btnCadastrar" mnemonicParsing="false" styleClass="btnTopo" text="Cadastrar" />
+               </children>
+            </HBox>
+            <ImageView fx:id="imgMembro" fitHeight="83.0" fitWidth="91.0" layoutX="39.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox fx:id="vboxDadosMembro" layoutX="9.0" layoutY="171.0" prefHeight="326.0" prefWidth="157.0" />
+         </children>
+      </Pane>
+   </children>
+</fx:root>

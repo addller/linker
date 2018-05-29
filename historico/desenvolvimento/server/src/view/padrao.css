@@ -1,0 +1,30 @@
+#hboxTopo{
+    -fx-padding: 15px 20px 10px 20px;
+    -fx-spacing: 15px;
+    -fx-background-color: black;
+}
+.btnTopo{
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-background-color:
+        linear-gradient(to left, red, blue),
+        linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%),
+        linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
+        linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%);
+}
+
+.btnTopo:pressed{
+    -fx-background-color:        
+        linear-gradient(to bottom,cyan, blue);
+}
+
+#txtPesquisar{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-pref-height: 25;
+    -fx-font-style: italic;
+}

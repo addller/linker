@@ -1,0 +1,20 @@
+#imgCadastro{
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-pref-height: 50;
+    -fx-pref-width: 50;
+    -fx-padding: 10;
+    -fx-background-color: firebrick;
+}
+
+GridPane Label, GridPane CheckBox{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-height: 25;
+}
+GridPane TextField, GridPane PasswordField{
+     -fx-font-size: 10pt;
+     -fx-text-fill: blue;
+     -fx-padding: 5;
+     -fx-background-color: rgba(255,255,255,.8);
+}
