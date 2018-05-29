@@ -14,6 +14,7 @@ create or replace function registrarMembro(
     	begin
             insert into membro(login_name, pass, email, sexo, nascimento, nome)
             values(_login_name, _pass, _email, _sexo, _nascimento, _nome) returning membro.id into newId;
+            perform registrarAlbum(newId, 'perfil');
 			return newId;         
 		end
     $$
