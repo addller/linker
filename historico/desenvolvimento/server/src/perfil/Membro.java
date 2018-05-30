@@ -8,12 +8,13 @@ package perfil;
 import cadastro.Cadastro;
 import acesso.Login;
 import denuncia.Denuncia;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import publicacao.Comentario;
 import publicacao.Notificacao;
 import publicacao.Postagem;
 import java.util.Observable;
-import javafx.scene.image.Image;
 
 
 /**
@@ -31,7 +32,7 @@ public class Membro extends Observable{
    private final HashSet<Incrito> inscritos;
    private long totalInscritos;
    private Cadastro cadastro;
-   private Image imgMembro;
+   private BufferedImage imgMembro;
 
     public Membro(Login login, StatusMembro status) {
         this.login = login;
@@ -102,12 +103,18 @@ public class Membro extends Observable{
         return cadastro;
     }
 
-    public void setImgMembro(Image imgMembro) {
+    public void setImgMembro(BufferedImage imgMembro) {
         this.imgMembro = imgMembro;
     }
 
-    public Image getImgMembro() {
+    public BufferedImage getImgMembro() {
         return imgMembro;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
+    
     
 }
