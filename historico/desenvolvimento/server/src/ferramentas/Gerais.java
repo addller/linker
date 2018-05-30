@@ -5,8 +5,12 @@
  */
 package ferramentas;
 
+import java.io.File;
+import java.util.Arrays;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 /**
  *
@@ -18,5 +22,11 @@ public abstract class Gerais {
         final ClipboardContent content = new ClipboardContent();
         content.putString(texto);
         clipboard.setContent(content);
+    }
+    
+    public static File abrirArquivo(Window ownerWindow){
+        FileChooser chooser = new FileChooser();
+        chooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("imagem", Arrays.asList(".jpg",".jpeg",".png",".gif")));
+        return chooser.showOpenDialog(ownerWindow);
     }
 }
