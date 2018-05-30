@@ -16,7 +16,6 @@ import java.sql.SQLException;
  */
 public class Login implements Validavel {
 
-    private long id;
     private final String email, loginName;
     private final byte[] pass;
 
@@ -28,7 +27,6 @@ public class Login implements Validavel {
 
     public Login(ResultSet result) throws SQLException {
         this(result.getString("email"), result.getString("login_name"), result.getBytes("pass"));
-        this.id = result.getLong("id");
     }
 
     @Override
@@ -44,14 +42,6 @@ public class Login implements Validavel {
                 new Validacao(passe.matches(".*[0-9]+.*"), "A senha ao menos um número"),
                 new Validacao(passe.matches(".*[?!@#$%&*-_]+.*"), "Informe um dos seguintes caracteres especiais em sua senha: ?!@#$%&*-_")
         );
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getEmail() {
