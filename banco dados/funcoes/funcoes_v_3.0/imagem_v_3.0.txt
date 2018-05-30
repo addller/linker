@@ -20,3 +20,48 @@ language plpgsql;
 select registrarImagem(2,'nova imagem','jpeg','perfil','pequenA');
 select registrarImagem(2,'nova imagem','jpeg','perfil','mEdia');
 select registrarImagem(2,'nova imagem','jpeg','perfil','gRande');
+
+create or replace function registrarImagemPerfil(
+    _id_proprietario bigint,
+    _imagem bytea,
+    _escala character varying
+    )
+	returns bigint as
+    	$$
+        declare 
+        _id_album bigint;
+        newId bigint;
+        
+        begin
+        	select id into _id_album from album where id_proprietario = _id_proprietario and nome_album = 'perfil' limit 1;
+            select id into newId from imagem where id_album = _id_album and escala = _escala;
+            if(newId is null) then
+            	insert into imagem(id_album, imagem, titulo,escala, extensao)
+                	values(_id_album, _imagem, 'perfil',_escala, 'jpg') returning imagem.id into newId;
+            else
+            	update imagem set imagem = _imagem where id_album = _id_album and escala = _escala;
+            end if;
+            return newId;
+        end
+        $$
+language plpgsql;
+
+select * from registrarImagemPerfil(38, 'imagemG','grande');
+
+
+create or replace function _getImagemPerfil(_id_proprietario bigint, _escala character varying)
+	returns setof imagem as
+    	$$
+        	declare
+            	_id_album bigint;
+        	begin
+            	select id into _id_album from album
+                	where album.id_proprietario = _id_proprietario and album.nome_album = 'perfil' limit 1;
+                
+                return query select * from imagem where id_album = _id_album and escala = _escala::citext limit 1;
+            end
+        $$
+language plpgsql;
+  
+--select * from imagem;
+select * from _getImagemPerfil(75, 'media');
