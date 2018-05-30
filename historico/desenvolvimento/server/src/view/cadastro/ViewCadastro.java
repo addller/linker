@@ -6,9 +6,16 @@ import cadastro.Cadastro;
 import dao.BaseDados;
 import dao.DAOCreate;
 import dao.TypeBaseDados;
+import ferramentas.EscalaImagem;
 import ferramentas.Formatos;
+import ferramentas.Gerais;
 import ferramentas.Mensagem;
 import ferramentas.Validacao;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,10 +36,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import perfil.Membro;
 import perfil.StatusMembro;
 import view.Cenario;
 import view.MyView;
+import view.main.ViewMain;
 
 public class ViewCadastro extends MyView implements Initializable {
 
@@ -61,6 +71,7 @@ public class ViewCadastro extends MyView implements Initializable {
             btnEntrar,
             btnVoltar,
             btnHome;
+    private boolean changeImage;
 
     public ViewCadastro(Ambiente ambienteExecucao, MyView viewPrevious) {
         super(new Cenario("Ekemera  - Linker", "viewCadastro"), ambienteExecucao);
@@ -109,8 +120,24 @@ public class ViewCadastro extends MyView implements Initializable {
             toogleCheckBox(checkF, checkM);
             btnEntrar.setOnAction(on -> showViewEntrar());
             btnHome.setOnAction(on -> showViewHome());
-            voltar(btnVoltar);            
+            voltar(btnVoltar);
+            imgCadastro.setOnMouseReleased(on -> selecionarImagemPerfil());
         });
+
+    }
+
+    private void selecionarImagemPerfil() {
+        File arquivoImagem = Gerais.abrirArquivo(getCenario().getCena().getWindow());
+        try {
+            if (arquivoImagem == null) {
+                return;
+            }
+            changeImage = true;
+            BufferedImage img = ImageIO.read(arquivoImagem);
+            this.imgCadastro.setImage(SwingFXUtils.toFXImage(img, null));
+        } catch (IOException ex) {
+            Logger.getLogger(ViewCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -141,10 +168,26 @@ public class ViewCadastro extends MyView implements Initializable {
         try {
             DAOCreate registro = new DAOCreate(null, BaseDados.getConnection(TypeBaseDados.LINKER));
             ResultSet result = registro.registrarMembro(membro);
-            Mensagem.alerta("Cadastrado: " + result.getLong("id"));
-        } catch (SQLException ex) {
+            membro.setId(result.getLong("id"));
+            registrarImagemPerfil(membro, registro);
+            ViewMain home = (ViewMain) viewMain;
+            home.setMembro(membro);
+            home.show();
+        } catch (SQLException | IOException ex) {
             Logger.getLogger(ViewCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    private void registrarImagemPerfil(Membro membro, DAOCreate registro) throws SQLException, IOException {
+        if (changeImage) {
+            int largura = (int) imgCadastro.getFitWidth(),
+                    altura = (int) imgCadastro.getFitHeight();
+            membro.setImgMembro(SwingFXUtils.fromFXImage(imgCadastro.getImage(), new BufferedImage(largura, altura, BufferedImage.TYPE_INT_RGB)));
+            for (EscalaImagem escala : EscalaImagem.values()) {
+                registro.registrarImagemPerfil(membro, escala);
+            }
+        }
+    }
+    
+    
 }

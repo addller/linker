@@ -16,14 +16,14 @@
         <URL value="@../padrao.css" />
     </stylesheets>
    <children>
-      <Pane layoutY="-1.0" prefHeight="511.0" prefWidth="827.0">
+      <Pane layoutY="-1.0" prefHeight="511.0" prefWidth="849.0">
          <children>
             <ImageView fx:id="imgFundo" fitHeight="510.0" fitWidth="850.0" layoutX="-1.0" pickOnBounds="true" styleClass="lblLogar">
                <image>
                   <Image url="@../../img/fundo_login.png" />
                </image>
             </ImageView>
-            <HBox fx:id="hboxTopo" prefHeight="54.0" prefWidth="826.0">
+            <HBox fx:id="hboxTopo" prefHeight="54.0" prefWidth="850.0">
                <children>
                   <ImageView fitHeight="42.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -42,9 +42,13 @@
                   </Pane>
                   <Button fx:id="btnEntrar" mnemonicParsing="false" prefWidth="70.0" styleClass="btnTopo" text="Entrar" />
                   <Button fx:id="btnCadastrar" mnemonicParsing="false" styleClass="btnTopo" text="Cadastrar" />
+                  <Button fx:id="btnSair" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" styleClass="btnTopo" text="Sair" />
                </children>
             </HBox>
-            <ImageView fx:id="imgMembro" fitHeight="83.0" fitWidth="91.0" layoutX="39.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgMembro" fitHeight="60.0" fitWidth="70.0" layoutX="39.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/logado.png" />
+               </image></ImageView>
             <VBox fx:id="vboxDadosMembro" layoutX="9.0" layoutY="171.0" prefHeight="326.0" prefWidth="157.0" />
          </children>
       </Pane>

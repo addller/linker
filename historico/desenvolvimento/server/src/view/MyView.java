@@ -6,6 +6,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import view.cadastro.ViewCadastro;
@@ -18,6 +19,7 @@ public abstract class MyView {
     protected Window ownerWindow;
     protected MyView viewPrevious;
     protected static MyView viewMain;
+    protected Image igmPerfil;
 
     public MyView(Cenario cenario, Ambiente ambienteExecucao) {
         this.cenario = cenario;

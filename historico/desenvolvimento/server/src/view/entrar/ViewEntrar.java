@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -104,9 +105,10 @@ public class ViewEntrar extends MyView implements Initializable {
             Login login = new Login(result);
             Cadastro cadastro = new Cadastro(result);
             Membro membro = new Membro(login, StatusMembro.MEMBRO);
+            membro.setId(result.getLong("id"));
             membro.setCadastro(cadastro);
-            ViewMain home = (ViewMain) viewMain;
-            Platform.runLater(() -> {
+            ViewMain home = (ViewMain) viewMain;            
+            Platform.runLater(() -> {                
                 home.setMembro(membro);
                 home.show();
             });
@@ -114,5 +116,6 @@ public class ViewEntrar extends MyView implements Initializable {
             Logger.getLogger(ViewEntrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
 }
