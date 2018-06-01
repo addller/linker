@@ -26,37 +26,6 @@ select registrarMembro('_nome', now()::Date, 'F', 'alra', '_pass', 'alra') as id
 --###################################################################################################
 
 
-create or replace function _editar_perfil(
-    _id_membro bigint,
-    _nome character varying,    
-    _nascimento date,
-    _sexo char,
-    _login_name character varying,
-    _pass bytea,
-    _email character varying    
-    ) 
-    returns void as
-    $$
-    begin
-    	update membro set 
-        	login_name = _login_name,
-            pass = _pass,
-            email = _email, 
-            sexo = _sexo,
-            nascimento = _nascimento,
-            nome = _nome
-  				where membro.id = _id_membro;
-    	end
-    $$
-language plpgsql;
-
---select * from _editar_perfil(3,'caroline', now()::Date, 'F', 'caroline', '_pass', 'caroline');
---select * from membro;
-
-
---###################################################################################################
-
-
 create or replace function _logar(
     _login_name character varying,
     _pass bytea
@@ -73,4 +42,51 @@ select * from _logar('ana@mail', 'ana@mail') as membro;
 
 --###################################################################################################
 
+create or replace function _editarPerfil(
+    _id_membro bigint,
+    _nome character varying,    
+    _nascimento date,
+    _sexo char,
+    _login_name character varying,
+    _pass bytea,
+    _old_pass bytea,
+    _old_login_name character varying
+    ) 
+    returns setof membro as
+    $$
+    	begin
+        	update membro set login_name = _login_name, pass = _pass, sexo = _sexo, nome = _nome, nascimento = _nascimento 
+            	where id = _id_membro and login_name = _old_login_name and pass = _old_pass; 
+            return query select * from membro where id = _id_membro and login_name = _login_name and pass = _pass; 
+		end
+    $$
+language plpgsql;
 
+select * from _editarPerfil(81,'ana@mail', now()::date, 'F','ana@mail','ana@mail','ana@mail','ana@mail');
+
+
+--###################################################################################################
+
+
+create or replace function _editarCadastroMembro(
+    _id_membro bigint,
+    _nome character varying,    
+    _nascimento date,
+    _sexo char,
+    _pass bytea
+    ) 
+    returns boolean as
+    $$
+    	declare
+        	_id bigint;
+    	begin
+        	select id into _id from membro where membro.id = _id_membro and membro.pass = _pass limit 1;
+            if(_id is null) then
+            return false;
+            end if;
+        	update membro set nome = _nome, sexo = _sexo, nascimento = _nascimento 
+            	where id = _id_membro and pass = _pass; 
+            return true;
+		end
+    $$
+language plpgsql;
