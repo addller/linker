@@ -90,3 +90,58 @@ create or replace function _editarCadastroMembro(
 		end
     $$
 language plpgsql;
+
+
+
+--###########################################################################################################
+
+
+create or replace function _editarSenha(
+    _id_membro bigint,
+    _pass bytea,
+    _old_pass bytea
+    ) 
+    returns boolean as
+    $$
+    	declare
+            get_pass character varying;
+    	begin
+        	select pass into get_pass from membro 
+            	where membro.id = _id_membro and pass = _old_pass limit 1;
+            if(get_pass is not null) then
+            	update membro set pass = _pass where id = _id_membro;
+            	return true;
+            end if;        	 
+            return false;
+		end
+    $$
+language plpgsql;
+
+
+--####################################################################################################
+
+
+create or replace function _editarLoginName(
+    _id_membro bigint,
+    _login_name character varying,
+    _old_login_name character varying,
+    _pass bytea
+    ) 
+    returns character varying as
+    $$
+    	declare
+            get_login_name character varying;
+            get_pass character varying;
+    	begin
+        	select login_name, pass into get_login_name, get_pass from membro 
+            	where membro.id = _id_membro limit 1;
+            if(get_login_name <> _old_login_name) then
+            	return 'O nome de login esta errado';
+            elsif(get_pass <> _pass) THEN
+            	return 'A senha esta incorreta';
+            end if;
+            update membro set login_name = _login_name where membro.id = _id_membro;
+            return 'SUCCES';            
+		end
+    $$
+language plpgsql;
