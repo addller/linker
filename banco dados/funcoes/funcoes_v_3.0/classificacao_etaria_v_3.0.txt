@@ -1,6 +1,8 @@
 create or replace function registrarClassificacaoEtaria(
+    _id integer,
+    _classificacao character varying,
     _tipo character varying,    
-    _descricao character varying,
+    _codigo character varying,
     _idade integer
     ) 
     returns integer as
@@ -8,10 +10,10 @@ create or replace function registrarClassificacaoEtaria(
     	declare
     		newId integer;
     	begin
-            insert into classificacao_etaria(tipo, descricao, idade)
-            values(_tipo, _descricao, _idade) returning classificacao_etaria.id into newId;
+            insert into classificacao_etaria(id,classificacao, tipo, codigo, idade)
+            values(_id, _classificacao, _tipo, _codigo, _idade) returning classificacao_etaria.id into newId;
 			return newId;         
 		end
     $$
-language plpgsql;  
---select registrarClassificacaoEtaria('infantil','criancas até 6 anos',6) as id;
+language plpgsql; 
+--povoamento criado
