@@ -1,13 +1,12 @@
 create or replace function registrarPostagem(
+    _id_membro_postante bigint,
     _descricao character varying,
     _vetor_url_site  character varying[],
     _vetor_url_video  character varying[],
     _vetor_url_imagem  character varying[],
     _palavra_chave  character varying,
     _titulo  character varying,
-    _patrocinador  character varying,
-    _id_classificacao_etaria integer,
-    _id_membro_postante bigint
+    _patrocinador  character varying
     ) 
     returns bigint as
     $$
@@ -22,7 +21,6 @@ create or replace function registrarPostagem(
                 palavra_chave,
                 titulo,
                 patrocinador,
-   				id_classificacao_etaria,
                 id_membro_postante
 				)
             		values(
@@ -33,7 +31,6 @@ create or replace function registrarPostagem(
                         _palavra_chave, 
                         _titulo, 
                         _patrocinador,
-    					_id_classificacao_etaria,
                         _id_membro_postante
                     ) 
             	returning postagem.id into newId;
@@ -43,27 +40,25 @@ create or replace function registrarPostagem(
 language plpgsql;
   
 select registrarPostagem(
+      			85,
                 'descricao', 
                 array['url site','a','b'],
                 array['url video','c','d'],
    				array['url imagem','e','f'],
                 'palavra_chave',
                 'titulo',
-                'patrocinador',
-   				1,
-                3
+                'patrocinador'              
 ) as id;
 				
-				
-				
 select registrarPostagem(
+                    85,
                 'descricao', 
                 null,
                 null,
    				null,
                 null,
                 'titulo',
-                null,
-   				1,
-                3
-) as id;
+                null
+ ) as id;
+ 
+ select * from postagem;
