@@ -12,6 +12,7 @@ create or replace function registrarInscrito(
             		where inscrito.id_registrado = _id_registrado and inscrito.id_registrando = _id_registrando limit 1;                
                 if(isRegistrado is null) then
             		insert into inscrito(id_registrando, id_registrado) values(_id_registrando, _id_registrado);
+                    update membro set total_inscritos = total_inscritos + 1 where id = _id_registrando;
                 	return true;
                 end if;	
             end if; 
@@ -19,5 +20,22 @@ create or replace function registrarInscrito(
 		end
     $$
 language plpgsql;
-select registrarInscrito(3,6) as isInscrito;
+select * from membro;
+select registrarInscrito(85,88) as isInscrito;
 
+
+--############################################################################################################################
+
+
+create or replace function _getInscritos(
+    _id_membro bigint
+	) 
+    returns setof inscrito as
+    $$
+    	begin 
+        	return query select * from inscrito where  id_registrando = _id_membro;
+		end
+    $$
+language plpgsql;
+select * from membro;
+select _getInscritos(85) as isInscrito;

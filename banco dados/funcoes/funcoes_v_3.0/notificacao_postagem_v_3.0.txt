@@ -15,6 +15,26 @@ create or replace function registrarNotificacaoPostagem(
 language plpgsql;
 --select * from membro;--3, 6, 7
 --select * from postagem;-- 3,4,5,6,7,8
---select registrarNotificacaoPostagem(7,7) as id;
+--select registrarNotificacaoPostagem(85,54) as id;
 --select * from notificacao_postagem
 
+
+--######################################################################################################################
+
+create or replace function _notificarInscritos(
+        _id_publicador bigint,
+    	_id_postagem bigint
+	) 
+    returns table(_id_inscrito bigint) as
+    $$
+    	declare
+        	_id_registrado bigint;
+    	begin 
+        	for _id_registrado in select id_registrado from _getInscritos(_id_publicador) loop
+            	return query select registrarNotificacaoPostagem(_id_registrado,_id_postagem);
+            end loop;  
+  		end
+    $$
+language plpgsql;
+--delete from notificacao_postagem;
+--select _notificarInscritos(85,54) as id;
