@@ -64,3 +64,4 @@ select registrarClassificacaoEtaria(63,'DROGAS','PRODUÇÃO OU TRÁFICO DE QUALQ
 select registrarClassificacaoEtaria(64,'DROGAS','CONSUMO DE DROGAS ILÍCITAS','C.5.2.',16);
 select registrarClassificacaoEtaria(65,'DROGAS','INDUÇÃO AO CONSUMO DE DROGAS ILÍCITAS','C.5.3.',16);
 select registrarClassificacaoEtaria(66,'DROGAS','APOLOGIA AO USO DE DROGAS ILÍCITAS','C.6.1.',18);
+select registrarClassificacaoEtaria(67,'NÃO CLASSIFICADO','PENDENTE DE CLASSIFICACAO','S.1.1.',0);--PADRAO
