@@ -4,7 +4,6 @@ create or replace function registrarPostagem(
     _vetor_url_site  character varying[],
     _vetor_url_video  character varying[],
     _vetor_url_imagem  character varying[],
-    _palavra_chave  character varying,
     _titulo  character varying,
     _patrocinador  character varying
     ) 
@@ -18,7 +17,6 @@ create or replace function registrarPostagem(
                 vetor_url_site,
                 vetor_url_video,
                 vetor_url_imagem,
-                palavra_chave,
                 titulo,
                 patrocinador,
                 id_membro_postante
@@ -28,7 +26,6 @@ create or replace function registrarPostagem(
                         _vetor_url_site, 
                         _vetor_url_video,
                         _vetor_url_imagem,
-                        _palavra_chave, 
                         _titulo, 
                         _patrocinador,
                         _id_membro_postante
@@ -45,7 +42,6 @@ select registrarPostagem(
                 array['url site','a','b'],
                 array['url video','c','d'],
    				array['url imagem','e','f'],
-                'palavra_chave',
                 'titulo',
                 'patrocinador'              
 ) as id;
@@ -56,9 +52,6 @@ select registrarPostagem(
                 null,
                 null,
    				null,
-                null,
                 'titulo',
                 null
  ) as id;
- 
- select * from postagem;

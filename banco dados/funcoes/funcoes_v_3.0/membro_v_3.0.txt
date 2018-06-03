@@ -145,3 +145,26 @@ create or replace function _editarLoginName(
 		end
     $$
 language plpgsql;
+
+
+
+--###########################################################################################################
+
+
+
+create or replace function _getDBKey(_id_membro bigint, _login_name character varying, _pass bytea)
+	returns integer as
+    	$$
+        	declare
+            	_db_key integer;
+        	begin
+            	select db_key into _db_key from membro where 
+                	id = _id_membro 
+                    and login_name = _login_name
+                    and pass = _pass;
+                    return _db_key;
+           	end
+        $$
+language plpgsql;
+
+select _getDBKey(85, 'aaaa@mail','aaaa@mail');
