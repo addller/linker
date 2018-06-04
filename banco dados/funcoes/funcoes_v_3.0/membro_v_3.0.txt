@@ -1,4 +1,4 @@
---Obs.: pegar o id do status membro no banco de dados ->> muito importante
+--Obs.: pegar o _id_membro e o _db_key do status membro no banco de dados ->> muito importante
 create or replace function registrarMembro(
     _nome character varying,    
     _nascimento date,
@@ -7,15 +7,16 @@ create or replace function registrarMembro(
     _pass bytea,
     _email character varying    
     ) 
-    returns bigint as
+    returns table(_id_membro bigint, _db_key bigint) as
     $$
     	declare
     		newId bigint;
+            db_key bigint;
     	begin
             insert into membro(login_name, pass, email, sexo, nascimento, nome)
-            values(_login_name, _pass, _email, _sexo, _nascimento, _nome) returning membro.id into newId;
+            values(_login_name, _pass, _email, _sexo, _nascimento, _nome) returning membro.id, membro.db_key into newId, db_key;
             perform registrarAlbum(newId, 'perfil');
-			return newId;         
+			return query select newId, db_key;         
 		end
     $$
 language plpgsql;
@@ -147,24 +148,3 @@ create or replace function _editarLoginName(
 language plpgsql;
 
 
-
---###########################################################################################################
-
-
-
-create or replace function _getDBKey(_id_membro bigint, _login_name character varying, _pass bytea)
-	returns integer as
-    	$$
-        	declare
-            	_db_key integer;
-        	begin
-            	select db_key into _db_key from membro where 
-                	id = _id_membro 
-                    and login_name = _login_name
-                    and pass = _pass;
-                    return _db_key;
-           	end
-        $$
-language plpgsql;
-
-select _getDBKey(85, 'aaaa@mail','aaaa@mail');

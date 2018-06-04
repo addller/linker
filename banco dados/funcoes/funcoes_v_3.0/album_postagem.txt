@@ -1,0 +1,14 @@
+create or replace function registrarAlbumPostagem(_id_postagem bigint, _img_postagem bytea, _img_patrocinador bytea)
+	returns boolean as
+    	$$
+        begin
+        	if(_img_postagem is not null or _img_patrocinador is not null) then
+            	insert into album_postagem values(_id_postagem, _img_postagem, _img_patrocinador);
+                return true;
+            end if;
+                return false;
+           	end
+        $$
+language plpgsql;
+
+select registrarAlbumPostagem(57, '_img_postagem', '_img_patrocinador');

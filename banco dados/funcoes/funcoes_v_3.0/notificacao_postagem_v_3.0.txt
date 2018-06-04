@@ -31,7 +31,8 @@ create or replace function _notificarInscritos(
         	_id_registrado bigint;
     	begin 
         	for _id_registrado in select id_registrado from _getInscritos(_id_publicador) loop
-            	return query select registrarNotificacaoPostagem(_id_registrado,_id_postagem);
+            	perform registrarNotificacaoPostagem(_id_registrado,_id_postagem);
+                return query select _id_registrado;
             end loop;  
   		end
     $$
