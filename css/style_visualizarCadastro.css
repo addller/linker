@@ -1,0 +1,514 @@
+*{
+    margin: 0;
+    padding:0;
+    font-family: sans-serif;
+    }
+    
+    body{
+      color: rgb(255, 255, 255);
+    }
+    
+    /* Menu */
+    header{
+        position: absolute;
+        border-top: 0px solid #000000;
+        width: 100%;
+        height:72px;    
+        overflow:hidden;    
+        z-index:100;    
+        }
+    
+    #imglogado{
+        position: absolute;
+        width: 50px; 
+        height: 50px;
+        left: 96%;
+        top: 10px;
+    }
+    
+    
+    
+    
+    .logo img:hover {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    
+    #search-box{
+    
+        position: initial;
+        background-color: #222;
+        width: 100%;
+        margin-left: -5px;
+    }
+    
+    #logo{
+        padding: 13px 10px;
+        float: left;
+        
+    }
+    
+    
+    .menu ul{
+        list-style: none;
+        position: relative;
+        bottom: 12px;
+        right: 5%;
+    }
+    
+    .menu ul li{
+       width: 150px;
+       float: right;
+    }
+    
+    .menu a{
+        padding: 10px;
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        background-color: #222;
+        color: #fff;
+        
+    }
+    
+    
+    .menu ul ul{
+    position: absolute;
+    visibility: hidden;
+    }
+    
+    .menu ul li:hover ul{
+        visibility: visible;
+    }
+    
+    .menu a:hover{
+    background-color: #f4f4f4;
+    color: #555;
+    }
+    
+    .menu ul ul li{
+        float: none;
+        border-bottom: solid 1px #ccc;
+    }
+    
+    .menu ul ul li a{
+        background-color: #069;
+    }
+    
+    /* Estilo da barra de pesquisa*/
+    #search-box {
+        position: fixed;
+        margin: 0;
+    }
+    
+    
+    #search-form {
+        float: center;
+        width: 40%;
+        left: 10%;
+        top: 20px;
+        position: relative;
+        height: 30px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 10px;
+        background-color: #fff;
+        overflow: hidden;
+    }
+    #search-text {
+        font-size: 14px;
+        color: #ddd;
+        border-width: 0;
+        background: transparent;
+    }
+    
+    #search-box input[type="text"] {
+        width: 100%;
+        padding: 5px 0 12px 1em;
+        color: #333;
+        outline: none;
+    }
+    
+    #search-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 30px;
+        width: 80px;
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        line-height: 26px;
+        border-width: 0;
+        background-color: #4d90fe; /*--define a cor do botão Buscar--*/
+        -webkit-border-radius: 0px 5px 5px 0px;
+        -moz-border-radius: 0px 5px 5px 0px;
+        border-radius: 0px 5px 5px 0px;
+        cursor: pointer;
+    }
+    
+    
+    /* Label*/
+    label[for="bt_menu"]{
+        padding: 5px;
+        background-color: #222;
+        color: #fff;
+        font-family: "Arial";
+        text-align: center;
+        font-size: 30px;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+    }
+    
+    #bt_menu{
+        display: none;
+    }
+    
+    label[for="bt_menu"]{
+        display: none;
+    }
+ 
+#imgPessoaLogada{
+    width: 120px;
+    height: 120px;
+}
+
+#campoCadastrar{
+    padding: 2; /*espaço entre a borda e o conteúdo do elemento*/
+    width: 79%; /*largura*/
+    float:right; /*define que o elemento deve flutuar à esquerda*/
+    font-size: 17px;
+    background-color:#d3dae8; /*cor de fundo*/
+    margin-bottom: 30px;
+}
+
+#meio{
+    padding: 180px 10px;
+    position: fixed;
+}
+
+#topo{
+    padding: 80px 10px;
+}
+
+.campoPostar{
+    padding: 5px 15px; /*espaço entre a borda e o conteúdo do elemento*/
+}
+
+
+#btnAdicionarSite, #btnAdicionarVideo, #btnAdicionarImagem{
+    width: 50px;
+    cursor: pointer;
+
+}
+
+.btnPostar{
+    width: 100px;
+    height: 25px;
+    padding:10px 2px;
+    cursor: pointer;
+    float: left;
+    margin-top: 10px;    
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+.btnApagar{
+    width: 100px;
+    height: 25px;
+    padding:10px 2px;
+    cursor: pointer;
+    float: left;
+    margin-top: 10px;    
+    margin-bottom: 20px;
+}
+
+
+
+/*Aréa de Cadastro de links*/
+#dadosDireita{
+    padding: 2; /*espaço entre a borda e o conteúdo do elemento*/
+    width: 74%; /*largura*/
+    float:right; /*define que o elemento deve flutuar à esquerda*/
+    font-size: 17px;
+    color: #000000;
+  
+}
+
+#dadosEsquerda{
+    font-size: 17px;
+    float:left; /*define que o elemento deve flutuar à direita*/
+    padding: 10px 10px; /*espaço entre a borda e o conteúdo do elemento*/
+    width: 300px; /*largura*/  
+    height: 650px; 
+    top: 240px;    
+}
+
+
+/*Div da foto da postagem*/
+.divFotoPostagem{
+    padding: 10px 10px;
+    color: #000000;
+    background: #b2c4f5; /*cor do fundo da div*/
+    height: 280px;;
+ 
+}
+
+#fotoPostagem{
+    width: 100%;
+}
+
+.imgGostei{
+    width: 40px;
+    float: left;
+}
+
+.imgNaoGostei{
+    width: 40px;
+    float: right;
+}
+
+.imgGostei:hover, .imgNaoGostei:hover{  
+    cursor: pointer;   
+    -moz-opacity: 0.8;
+	opacity: 0.8 ;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	filter: alpha(opacity=50); 	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)";   
+} 
+
+progress {
+    margin-top: 6px;
+    margin-left: 11px;
+}
+
+#botaoVemComigo{
+    float: right;
+    height: 25px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.divVisualizacao{
+    margin-top: 20px;
+}
+
+/**/
+
+/*Div Cometarios*/
+.divComentario{
+    margin-top: 30px;
+    padding: 10px 10px;
+    color: #000000;
+    background: #b2c4f5; /*cor do fundo da div*/
+    height: 290px;;
+}
+
+#campoComentarioRecebidos{
+    padding: 4px;
+    outline: none;
+    margin-top: 0px;
+    resize: none;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+}
+
+#campoComentario{
+    padding: 4px;
+    margin-top: 0px;
+    resize: none;
+
+  
+
+}
+
+.divComentRecebido{
+    margin-top: 7px;   
+}
+
+#inputEnviar{
+    width: 100%;
+    height: 25px;
+}
+
+
+
+/**/
+
+/*div a direita*/
+
+.divCampoCheckbox{
+    margin-top: 10px;
+}
+
+#inputText{
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    overflow: auto;
+
+}
+
+
+input[type=checkbox] {
+    margin-top: 10px;
+    margin-left: 10%;
+    transform: scale(1.5);
+    cursor: pointer;
+  }
+
+#inputText{
+    margin-top: 10px;
+    width: 99%;
+}
+
+/**/
+
+/*Div campo Relacionados*/
+
+.divCampoRelacionados{
+    background: #4d90fe;
+    width: 99%;
+    height: 50px;
+    color: rgb(255, 255, 255);
+}
+
+.divCampoRelacionados h1{
+    padding: 3px 10px;
+    font-size: 40px;
+}
+
+#inputRelacionados{
+    width: 100%;
+    height: 405px;
+    margin-top: 0px;
+    resize: none;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+}
+
+
+/* Estilo Div Cadastrar*/
+
+#conteudoHome {
+	width: 300px;
+	height: 100%;
+	margin-top: 0px;
+	margin-left: auto;
+	position: relative;
+    z-index:10;
+}
+
+
+#imagemSelecionada{
+    width: 100%;
+    height: 200px;
+}
+
+
+
+
+.topoTitulo h1{
+    font-size: 50px; 
+    text-decoration: none; 
+    margin-left: 50px; 
+    margin-top: 12px;
+}
+
+.topoTitulo{
+    background-color: #806bfa;
+}
+
+#logoTitulo{
+    padding: 8px 10px;
+    float: left;
+}
+
+
+/*Lado Esquerdo*/
+#lateral{
+    font-size: 17px;
+    float:left; /*define que o elemento deve flutuar à direita*/
+    background-color:#d3dae8; /*cor de fundo*/
+    padding: 10px 10px; /*espaço entre a borda e o conteúdo do elemento*/
+    width: 18%; /*largura*/   
+    top: 80px; 
+    position: fixed;
+    height: 86%;
+    color: #000000;
+
+}
+
+
+
+#icoLogado{
+    width: 100px;
+    height: 100px;    
+    margin-left: 30%;
+    font-size: 12px;
+    float:left; /*define que o elemento deve flutuar à direita*/  
+}
+
+.h3text{
+    text-decoration: none;
+    text-align: center;
+    margin-top: 105px;
+    font-size: 18px;
+
+}
+
+.icologo label{
+    padding: 20px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.divDescricao{
+    margin: 0px;
+    margin-top: 20px;
+}
+
+#campoDescricao{
+    margin-top: 0px;
+    padding: 4px 4px;
+    outline: none;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+
+}
+
+.divPatrocinado{
+    margin-top: 20px;
+}
+
+#campoDescricaoPatrocinado{
+    margin-top: 0px;
+    padding: 4px 4px;
+    outline: none;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+}
+
+#icoPatrocinador{
+    margin-top: 10px;
+    margin-left: 60px;
+    widows: 120px;
+    height: 120px;
+}
+

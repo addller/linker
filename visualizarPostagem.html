@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Linker</title>
+    <link rel="stylesheet" href="css/style_visualizarCadastro.css">
+
+</head>
+
+<body>
+        <header>
+                <div id='search-box'>
+                    <input type="checkbox" id="bt_menu">
+                    <label for="bt_menu">&#9776;</label>
+        
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="img/logo.png" id='logo' width="200px">
+                        </a>
+                    </div>
+        
+                    <nav class="menu">
+                        <form action='#pesquisa#' id='search-form' method='get' target='_top'>
+                            <input id='search-text' name='q' placeholder='Digite sua pesquisa...' type='text' />
+                            <button id='search-button' type='submit'>
+                                <span>Buscar</span>
+                            </button>
+                        </form>
+                        <ul>
+                            <li>
+                                <a href="cadastrar.html">Cadastrar</a>
+                            </li>
+                            <li>
+                                <a href="login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="home.html">Página Inicial</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <img src="img/logado.png" id="imglogado">
+                </div>
+            </header>
+
+
+
+
+
+    <section id="topo">
+
+        <article id="campoCadastrar">
+            <div class="topoTitulo">
+                <img src="img/logo.png" id='logoTitulo' width="190px">
+                <h1>Título:</h1>
+            </div>
+
+            <aside id="dadosEsquerda">
+                <div class="divFotoPostagem">
+                    <img id="fotoPostagem" src="img/imgpost.png" />
+
+                    <img class="imgGostei" src="img/gostei.png" />
+
+                    <progress max="50" value="">
+                        Progresso
+                        <strong>:. de 60% feito </strong>
+                    </progress>
+
+                    <img class="imgNaoGostei" src="img/naoGostei.png" />
+                    <div class="divVisualizacao">
+                        <label id="labelViews">
+                            <b>Views:</b>
+                        </label>
+                        <input id="botaoVemComigo" type="button" value="Vem Comigo..." onclick="vemComigo()">
+                    </div>
+                </div>
+
+
+                <div class="divComentario">
+                    <h1>COMENTE</h1>
+
+                    <div class="divComentRecebido">
+                        <textarea name="comentarioRecebidos" id="campoComentarioRecebidos" rows="10" cols="36" maxlength="500" placeholder="" readonly="true"
+                            required></textarea>
+                    </div>
+
+                    <textarea name="comentario" id="campoComentario" rows="4" cols="36" maxlength="500" placeholder="Digite aqui seu comentário..."
+                        required></textarea>
+                    <input id="inputEnviar" type="button" value="Enviar" onclick="enviar">
+                </div>
+
+            </aside>
+
+
+
+            <article id="dadosDireita">
+
+                <div class="divCampoCheckbox">
+                    <input type="checkbox" name="gender" value="exibirtodos"> Exibir todos
+                    <input type="checkbox" name="gender" value="videolink"> Vídeo Link
+                    <input type="checkbox" name="gender" value="imagemlink"> Imagem Link
+                    <input type="checkbox" name="gender" value="sitelink"> Site Link
+                    <textarea name="links" id="inputText" rows="8" cols="1" maxlength="10000" style="resize: none"></textarea>
+                </div>
+
+                <div class="divCampoRelacionados">
+                    <h1>RELACIONADOS</h1>
+                    <textarea name="campoRelacionados" id="inputRelacionados" rows="8" cols="1" maxlength="10000" style="resize: none" readonly="true"></textarea>
+                </div>
+            </article>
+
+        </article>
+    </section>
+
+    <section id="meio">
+
+        <article id="lateral">
+            <div class="icologo">
+                <img src="img/logado.png" id='icoLogado'>
+            </div>
+            <div class="h3text">
+                <h3>Nome completo da pessoa</h3>
+            </div>
+
+            <div class="divDescricao">
+                <label>Drecrição</label>
+                <textarea name="descricao" id="campoDescricao" rows="8" cols="37" maxlength="500" style="resize: none" readonly="true"></textarea>
+            </div>
+
+            <div class="divPatrocinado">
+                <label>Patrocinador</label>
+                <div>
+                    <img src="img/empresario.png" id='icoPatrocinador'>
+                    <textarea name="descricaoPatrocinado" id="campoDescricaoPatrocinado" rows="11" cols="37" maxlength="500" style="resize: none"
+                        placeholder="@Patrocinador" readonly="true"></textarea>
+                </div>
+            </div>
+        </article>
+
+    </section>
+</body>
+
+</html>
