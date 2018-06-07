@@ -148,3 +148,60 @@ create or replace function _editarLoginName(
 language plpgsql;
 
 
+--####################################################################################################
+
+
+
+create or replace function _consultarMembroMinByPostagemId(_id_postagem bigint)
+	returns table(
+        id_membro bigint, 
+        nome_membro character varying, 
+        total_inscritos bigint,
+        data_inscricao date,
+        is_suspenso boolean,
+        imagem_membro bytea,
+        has_image boolean
+    ) as
+    $$
+		declare
+        	get_id bigint;
+        	get_nome character varying;
+        	get_total_inscritos bigint;
+        	get_data_inscricao date;
+       		get_is_sustenso boolean;
+        	get_imagem bytea;
+    	begin
+        	
+        	select 
+            	membro.id,
+        		membro.nome::character varying,
+        		membro.total_inscritos,
+        		membro.data_inscricao,
+       			membro.is_suspenso,
+        		imagem.imagem
+                	into
+                		get_id,
+        				get_nome,
+        				get_total_inscritos,
+        				get_data_inscricao,
+       					get_is_sustenso,
+        				get_imagem    
+            	from postagem, membro, album, imagem 
+                	where 
+                    	postagem.id = _id_postagem
+                        and membro.id = postagem.id_membro_postante
+                        and album.id_proprietario = postagem.id_membro_postante
+                        and album.nome_album = 'perfil'
+                        and album.id = imagem.id_album limit 1;  
+               	return query select get_id,
+        				get_nome,
+        				get_total_inscritos,
+        				get_data_inscricao,
+       					get_is_sustenso,
+        				get_imagem, get_imagem is not null;  
+        end
+    $$
+language plpgsql;
+
+select * from _consultarMembroMinByPostagemId(127);
+

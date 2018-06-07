@@ -7,31 +7,61 @@ create or replace function registrarPostagem(
     _titulo  character varying,
     _patrocinador  character varying
     ) 
-    returns bigint as
+    returns table(
+    _id bigint,
+    _visualizacoes bigint,
+    _avaliacoes_positivas bigint,
+    _avaliacoes_negativas bigint,
+    _is_suspensa boolean,
+    _data_postagem date
+    ) as
     $$
-    	declare
-    		newId bigint;
-    	begin
-            insert into postagem(
-                descricao, 
-                vetor_url_site,
-                vetor_url_video,
-                vetor_url_imagem,
-                titulo,
-                patrocinador,
-                id_membro_postante
-				)
-            		values(
-                        _descricao, 
-                        _vetor_url_site, 
-                        _vetor_url_video,
-                        _vetor_url_imagem,
-                        _titulo, 
-                        _patrocinador,
-                        _id_membro_postante
-                    ) 
-            	returning postagem.id into newId;
-			return newId;         
+    declare
+    get_id bigint;
+    get_visualizacoes bigint;
+    get_avaliacoes_positivas bigint;
+    get_avaliacoes_negativas bigint;
+    get_is_suspensa boolean;
+    get_data_postagem date;
+    begin
+    insert into postagem(
+        	descricao, 
+        	vetor_url_site,
+        	vetor_url_video,
+        	vetor_url_imagem,
+        	titulo,
+        	patrocinador,
+        	id_membro_postante	
+    		)
+            	values(	
+                    _descricao, 
+                    _vetor_url_site, 
+                    _vetor_url_video,
+                    _vetor_url_imagem,
+                    _titulo,
+                    _patrocinador,
+                    _id_membro_postante
+                ) 
+            	returning 
+                	postagem.id, 
+                    postagem.visualizacoes, 
+                    postagem.avaliacoes_positivas,
+                    postagem.avaliacoes_negativas,
+                    postagem.is_suspensa,
+                    postagem.data_postagem 
+                    	into 
+                        	get_id,
+                            get_visualizacoes,
+                            get_avaliacoes_positivas,
+                            get_avaliacoes_negativas,
+                            get_is_suspensa,
+                            get_data_postagem;
+			return query select get_id,
+                            get_visualizacoes,
+                            get_avaliacoes_positivas,
+                            get_avaliacoes_negativas,
+                            get_is_suspensa,
+                            get_data_postagem;         
 		end
     $$
 language plpgsql;
@@ -46,7 +76,7 @@ select registrarPostagem(
                 'patrocinador'              
 ) as id;
 				
-select registrarPostagem(
+select * from registrarPostagem(
                     85,
                 'descricao', 
                 null,
@@ -55,3 +85,18 @@ select registrarPostagem(
                 'titulo',
                 null
  ) as id;
+ 
+ 
+ --##########################################################################################################################
+ 
+ 
+ create or replace function _consultarPostagemByTitulo(_titulo character varying, _start bigint, _limit bigint)
+	returns setof postagem as
+    $$
+    	begin
+        	return query select * from postagem where titulo like '%'||_titulo||'%' and id > _start limit _limit; 
+        end
+    $$
+language plpgsql;
+
+select * from _consultarPostagemByTitulo('fa', 0, 5);

@@ -12,3 +12,13 @@ create or replace function registrarAlbumPostagem(_id_postagem bigint, _img_post
 language plpgsql;
 
 select registrarAlbumPostagem(57, '_img_postagem', '_img_patrocinador');
+
+create or replace function _getAlbumPostagem(_id_postagem bigint)
+	returns setof album_postagem as
+    	$$
+        begin
+        	return query select * from album_postagem where id_postagem = _id_postagem limit 1;
+        end
+        $$
+language plpgsql;
+select  * from _getAlbumPostagem(57);
