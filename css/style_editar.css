@@ -1,0 +1,333 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+    background: url(../img/fundo_cadastro.jpg) no-repeat;
+    background-size: cover;
+}
+
+
+
+
+/* LADO ESQUERDO */
+
+.divEsquerda{
+    
+ 
+    color: white;
+    float: left;
+    top: 440px;
+    margin-top: 400px;
+    transform: translate(30%, -40%);
+    width: 570px;
+    height: 500px;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+.divEditarEsquerda input{
+    font-size: 17px;
+    width:75%;
+    height: 24px;
+}
+
+#inputSexo1{
+    width: 10%;
+    height: 17px;
+}
+
+#inputSexo2{
+    width: 10%;
+    height: 17px;
+    margin-left: 0px;
+
+}
+
+#inputData{
+    width: 160px;
+    margin-right: 208px;
+}
+
+.divCampoCheckbox{
+    margin-top: 10px;
+    margin-right: 111px;
+}
+
+.divCampoCheckbox p{
+    font-size: 20px;
+}
+
+.image-upload p{
+    text-align: left;
+}
+
+.pStyle p{
+    float: left;
+    margin-left: 35px;
+}
+
+p{
+    text-align: right;
+}
+
+.divCampoEsquerda{
+    justify-content: right;
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    border-bottom: 1px solid #4caf50;
+}
+
+#campoData{
+    width: 27%;
+}
+.textCampoDS{
+    justify-content: right;
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    border-bottom: 1px solid #4caf50;
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    border-bottom: 5px solid #4caf50;
+    text-align: center;
+ 
+}
+
+
+
+.btn{
+    width: 100%;
+    background: none;
+    border: 2px solid #4caf50;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 0;
+    height: 40px;
+}
+
+.btn:hover	{
+    position: relative;
+    top: 1px;
+    left: 1px;
+    border-color: rgb(0, 255, 21);  
+    }
+
+
+    
+ 
+/* Estilo de Lista*/ 
+ 
+.divCampoEsquerda{
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.divEditarEsquerda ul { 
+    width:750px; 
+    list-style-type:none; 
+    list-style-position:outside; 
+    margin:0px; 
+    padding:0px; 
+    margin-top: 50px 10px; 
+} 
+ 
+ 
+.divCampoEsquerda li{ 
+    padding:8px;  
+    border-bottom:2px solid #eee; 
+    position:relative; 
+} 
+.divEditarEsquerda li:first-child, .divEditarEsquerda li:last-child { 
+    border-bottom:1px solid #777; 
+} 
+
+/*Imagem Upload*/
+
+
+.image-upload{
+    margin-left: 120px;
+}
+
+
+#imagemSelecionada{
+    width: 120px;
+    height: 120px;
+}
+
+/* Formatação de imagens com legendas */
+figure.foto-legenda { 
+    width: 120px;
+    height: 120px;
+	position: relative;
+	Border: 1px solid white; 
+	box-shadow: 1px 1px 4px black;
+
+}
+figure.foto-legenda img {
+    width: 120px;
+    height: 120px;
+}
+
+figure.foto-legenda figcaption {
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	background-color: rgba(0,0,0,.8);
+	color: white;
+	width: 100%;
+	height: 100%;
+	padding: 0px 5px;
+	box-sizing: border-box;
+    transition: opacity 1s;
+    cursor: pointer;
+}
+
+figcaption p{
+
+    margin-right: 15%;
+    margin-top: 80%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    float:right;
+}
+
+#camera{
+    margin-left: 5%;
+    width: 20px; 
+    height: 20px; 
+    float:left; 
+    margin-top: 80%; 
+}
+
+figure.foto-legenda:hover figcaption {
+	opacity: 1;
+}
+
+#imagemSelecionada:hover{  
+    cursor: pointer;  
+} 
+
+
+.image-upload > input
+{
+    display: none;
+}
+
+
+
+
+
+
+/* LADO DIREITO */
+
+.divDireita{
+    
+    padding: 0;
+    color: white;
+    float: right;
+    transform: translate(-30%, 40%);
+    width: 570px;
+    height: 500px;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+h2{
+    margin: 0;
+    padding: 0 0 20px;
+    border-bottom: 5px solid #808080;
+    text-align: center;
+}
+
+.divEditarDireita input{
+    font-size: 17px;
+    width:60%;
+    height: 24px;
+}
+
+
+
+.divCampoDireita{
+    justify-content: right;
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    border-bottom: 1px solid #4caf50;
+}
+
+#campoData{
+    width: 27%;
+}
+.textCampoDS{
+    justify-content: right;
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    border-bottom: 1px solid #4caf50;
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    border-bottom: 5px solid #4caf50;
+    text-align: center;
+ 
+}
+
+
+
+.btn{
+    width: 100%;
+    background: none;
+    border: 2px solid #4caf50;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 0;
+    height: 40px;
+}
+
+.btn:hover	{
+    position: relative;
+    top: 1px;
+    left: 1px;
+    border-color: rgb(0, 255, 21);  
+    }
+
+
+    
+ 
+/* Estilo de Lista*/ 
+ 
+.divCampoDireita{
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.divEditarDireita ul { 
+    width:750px; 
+    list-style-type:none; 
+    list-style-position:outside; 
+    margin:0px; 
+    padding:0px; 
+    margin-top: 50px 10px; 
+} 
+ 
+ 
+.divCampoDireita li{ 
+    padding:8px;  
+    border-bottom:2px solid #eee; 
+    position:relative; 
+} 
+.divEditarDireita li:first-child, .divEditarDireita li:last-child { 
+    border-bottom:1px solid #777; 
+} 
