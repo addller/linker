@@ -1,0 +1,22 @@
+create or replace function _updateTotalVisualizacoesPostagem(
+    _id_postagem bigint
+	) 
+    returns bigint as
+    $$
+    	declare
+        	get_visualizacoes bigint;
+    	begin 
+        	update postagem set visualizacoes = visualizacoes + 1 
+            	where postagem.id = _id_postagem RETURNING postagem.visualizacoes into get_visualizacoes;
+            	if(mod(get_visualizacoes, 10000) = 0) then
+            		insert into registro_visualizacoes(id_postagem, counter) values(_id_postagem, get_visualizacoes);
+            	end if;
+            return visualizacoes from postagem where id = _id_postagem;
+		end
+    $$
+language plpgsql;
+select _updateTotalVisualizacoesPostagem(170);
+select id, visualizacoes from postagem  where id = 170;
+select * from registro_visualizacoes;
+
+

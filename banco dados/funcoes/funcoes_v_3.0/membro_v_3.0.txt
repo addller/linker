@@ -122,6 +122,7 @@ language plpgsql;
 --####################################################################################################
 
 
+--select id, login_name, pass::text from membro where login_name like '%'||'@'||'%';
 create or replace function _editarLoginName(
     _id_membro bigint,
     _login_name character varying,
@@ -132,7 +133,7 @@ create or replace function _editarLoginName(
     $$
     	declare
             get_login_name character varying;
-            get_pass character varying;
+            get_pass bytea;
     	begin
         	select login_name, pass into get_login_name, get_pass from membro 
             	where membro.id = _id_membro limit 1;
@@ -146,6 +147,9 @@ create or replace function _editarLoginName(
 		end
     $$
 language plpgsql;
+select * from _editarLoginName(81, 'hauser@mail','crauser@mail','crauser@mail.com');
+select * from _editarLoginName(81, 'crauser@mail','hauser@mail','crauser@mail.com');
+select id, login_name, pass::text from membro where login_name like '%'||'@'||'%' and id = 81;
 
 
 --####################################################################################################

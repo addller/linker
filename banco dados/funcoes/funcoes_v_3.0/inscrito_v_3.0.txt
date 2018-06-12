@@ -2,7 +2,7 @@ create or replace function registrarInscrito(
     _id_registrando bigint, 
     _id_registrado bigint
 	) 
-    returns boolean as
+    returns table(registro boolean, _total_inscritos bigint) as
     $$
     	declare
         	isRegistrado bigint;
@@ -13,15 +13,17 @@ create or replace function registrarInscrito(
                 if(isRegistrado is null) then
             		insert into inscrito(id_registrando, id_registrado) values(_id_registrando, _id_registrado);
                     update membro set total_inscritos = total_inscritos + 1 where id = _id_registrando;
-                	return true;
+                else
+                	update membro set total_inscritos = total_inscritos - 1 where id = _id_registrando;
+                    delete from inscrito where id_registrando = _id_registrando and id_registrado = _id_registrado;
                 end if;	
             end if; 
-            return false;
+            return query select isRegistrado is null,(select total_inscritos from membro where id = _id_registrando limit 1);
 		end
     $$
 language plpgsql;
-select * from membro;
 select registrarInscrito(85,88) as isInscrito;
+
 
 
 --############################################################################################################################
